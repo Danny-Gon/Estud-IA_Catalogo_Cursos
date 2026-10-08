@@ -1,13 +1,23 @@
 /* Estud-IA — catálogo de cursos. CSS propio, sin frameworks. */
 
 :root {
-  --azul: #1a3a6b;
-  --azul-oscuro: #122a4f;
-  --azul-claro: #e8eef7;
+  /* Identidad grafica. Los tres colores de marca son #ae3489, #ee7b2c y
+     #00aeef. Solo el magenta alcanza contraste AA para texto (5.75:1): el
+     naranja (2.80) y el cian (2.53) no, asi que se usan como fondo con
+     texto oscuro o como acento grafico, nunca como color de letra. */
+  --marca: #ae3489;
+  --marca-oscura: #8e2770;
+  --marca-clara: #f7e9f3;
 
-  --fondo: #f4f6f9;
+  --naranja: #ee7b2c;
+  --cian: #00aeef;
+
+  --hero: #2a1030;
+  --hero-alto: #3a1640;
+
+  --fondo: #faf7fa;
   --blanco: #ffffff;
-  --borde: #e2e7ef;
+  --borde: #ebe3ea;
 
   --texto: #1b2430;
   --texto-suave: #5a6679;
@@ -21,12 +31,16 @@
 }
 
 /* Un color por línea de formación. Se usa en el chip de la tarjeta. */
-.cat-programacion   { --cat: #1a3a6b; }
-.cat-datos          { --cat: #0c6b5e; }
-.cat-nube           { --cat: #2563a8; }
-.cat-ciberseguridad { --cat: #8a2b36; }
-.cat-ia             { --cat: #5b3a8e; }
-.cat-marketing      { --cat: #8a5411; }
+/* Un tono por linea. Son puntos decorativos junto a una etiqueta escrita,
+   no el unico portador del significado. Anclados en los tres colores de
+   marca mas el verde del logotipo; los dos restantes se interpolan. La
+   pareja mas parecida queda a 121 de distancia RGB y 42 grados de tono. */
+.cat-programacion   { --cat: #ae3489; }   /* magenta de marca */
+.cat-ciberseguridad { --cat: #9c2b2b; }
+.cat-marketing      { --cat: #ee7b2c; }   /* naranja de marca */
+.cat-ia             { --cat: #95c11f; }   /* verde del logotipo */
+.cat-datos          { --cat: #00aeef; }   /* cian de marca */
+.cat-nube           { --cat: #6b4fbb; }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -42,7 +56,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--azul); }
+a { color: var(--marca); }
 
 .contenedor {
   max-width: var(--ancho);
@@ -56,14 +70,14 @@ a { color: var(--azul); }
   left: -9999px;
   top: 0;
   background: var(--blanco);
-  color: var(--azul);
+  color: var(--marca);
   padding: 10px 16px;
   z-index: 10;
 }
 .salto:focus { left: 8px; top: 8px; }
 
 :focus-visible {
-  outline: 2px solid var(--azul);
+  outline: 2px solid var(--marca);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -71,7 +85,7 @@ a { color: var(--azul); }
 /* ---------- Encabezado ---------- */
 
 .cabecera {
-  background: var(--azul);
+  background: var(--hero);
   color: var(--blanco);
   padding: 40px 0 36px;
 }
@@ -145,13 +159,13 @@ a { color: var(--azul); }
 }
 
 .chip-filtro:hover {
-  border-color: var(--azul);
-  color: var(--azul);
+  border-color: var(--marca);
+  color: var(--marca);
 }
 
 .chip-filtro[aria-pressed="true"] {
-  background: var(--azul);
-  border-color: var(--azul);
+  background: var(--marca);
+  border-color: var(--marca);
   color: var(--blanco);
 }
 
@@ -184,7 +198,7 @@ a { color: var(--azul); }
 .tarjeta:focus-visible {
   transform: translateY(-2px);
   box-shadow: var(--sombra-alta);
-  border-color: #c9d4e6;
+  border-color: #dcc4d6;
 }
 
 .chip-cat {
@@ -194,7 +208,7 @@ a { color: var(--azul); }
   letter-spacing: .05em;
   text-transform: uppercase;
   color: var(--blanco);
-  background: var(--cat, var(--azul));
+  background: var(--cat, var(--marca));
   border-radius: 999px;
   padding: 4px 10px;
   margin-bottom: 12px;
@@ -206,7 +220,7 @@ a { color: var(--azul); }
   line-height: 1.35;
   font-weight: 600;
   letter-spacing: -.01em;
-  color: var(--azul-oscuro);
+  color: var(--marca-oscura);
 }
 
 /* Descripción truncada a 2 líneas. */
@@ -250,7 +264,7 @@ a { color: var(--azul); }
 .tarjeta .ver {
   margin-left: auto;
   font-weight: 600;
-  color: var(--azul);
+  color: var(--marca);
 }
 
 /* ---------- Estados ---------- */
@@ -378,8 +392,8 @@ a { color: var(--azul); }
 
 .herramientas li {
   font-size: 14px;
-  background: var(--azul-claro);
-  color: var(--azul-oscuro);
+  background: var(--marca-clara);
+  color: var(--marca-oscura);
   border-radius: 6px;
   padding: 5px 11px;
 }
@@ -401,7 +415,7 @@ a { color: var(--azul); }
   padding: 16px 22px;
   cursor: pointer;
   font-weight: 600;
-  color: var(--azul-oscuro);
+  color: var(--marca-oscura);
   list-style: none;
 }
 
@@ -429,8 +443,8 @@ a { color: var(--azul); }
   display: grid;
   place-items: center;
   border-radius: 7px;
-  background: var(--azul-claro);
-  color: var(--azul);
+  background: var(--marca-clara);
+  color: var(--marca);
   font-size: 13px;
   font-weight: 600;
 }
@@ -471,14 +485,14 @@ a { color: var(--azul); }
   font-size: 15px;
   font-weight: 600;
   color: var(--blanco);
-  background: var(--azul);
+  background: var(--marca);
   border-radius: 8px;
   padding: 12px 22px;
   text-decoration: none;
   transition: background .15s;
 }
 
-.boton:hover { background: var(--azul-oscuro); }
+.boton:hover { background: var(--marca-oscura); }
 
 .boton svg {
   width: 17px;
@@ -528,7 +542,7 @@ a { color: var(--azul); }
    ===================================================================== */
 
 .portada {
-  background: linear-gradient(160deg, var(--azul) 0%, #15305a 100%);
+  background: linear-gradient(155deg, var(--hero-alto) 0%, var(--hero) 62%, #1d0b22 100%);
   color: var(--blanco);
   padding: 64px 0 56px;
 }
@@ -579,11 +593,11 @@ a { color: var(--azul); }
 .boton.secundario:hover { background: rgba(255, 255, 255, .1); }
 
 .detalle .boton.secundario {
-  color: var(--azul);
-  box-shadow: inset 0 0 0 1px #c9d4e6;
+  color: var(--marca);
+  box-shadow: inset 0 0 0 1px #e0cdda;
 }
 
-.detalle .boton.secundario:hover { background: var(--azul-claro); }
+.detalle .boton.secundario:hover { background: var(--marca-clara); }
 
 /* ---- Cifras ---- */
 
@@ -606,7 +620,7 @@ a { color: var(--azul); }
   font-size: 30px;
   font-weight: 700;
   letter-spacing: -.02em;
-  color: var(--azul);
+  color: var(--marca);
   line-height: 1.1;
 }
 
@@ -678,7 +692,7 @@ a { color: var(--azul); }
 .tarjeta-capa:focus-visible {
   transform: translateY(-3px);
   box-shadow: var(--sombra-alta);
-  border-color: #c9d4e6;
+  border-color: #dcc4d6;
 }
 
 .etiqueta-capa {
@@ -688,13 +702,12 @@ a { color: var(--azul); }
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--blanco);
-  background: var(--azul);
+  background: var(--marca);
   border-radius: 999px;
   padding: 5px 12px;
   margin-bottom: 14px;
 }
 
-.tarjeta-capa.capa-2 .etiqueta-capa { background: #0c6b5e; }
 
 .cabecera .etiqueta-capa { background: rgba(255, 255, 255, .2); }
 
@@ -703,7 +716,7 @@ a { color: var(--azul); }
   font-size: 21px;
   font-weight: 600;
   letter-spacing: -.015em;
-  color: var(--azul-oscuro);
+  color: var(--marca-oscura);
 }
 
 .tarjeta-capa .lema { margin: 0 0 12px; font-weight: 500; }
@@ -714,8 +727,8 @@ a { color: var(--azul); }
 .pastilla {
   font-size: 12.5px;
   font-weight: 500;
-  background: var(--azul-claro);
-  color: var(--azul-oscuro);
+  background: var(--marca-clara);
+  color: var(--marca-oscura);
   border-radius: 6px;
   padding: 4px 10px;
 }
@@ -732,7 +745,7 @@ a { color: var(--azul); }
 .ficha-capa li { margin-bottom: 6px; }
 .ficha-capa b { color: var(--texto); }
 
-.tarjeta-capa .cta { margin-top: auto; font-weight: 600; color: var(--azul); }
+.tarjeta-capa .cta { margin-top: auto; font-weight: 600; color: var(--marca); }
 
 /* ---- Líneas ---- */
 
@@ -761,7 +774,7 @@ a { color: var(--azul); }
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: var(--cat, var(--azul));
+  background: var(--cat, var(--marca));
 }
 
 .tarjeta-linea .menudo { font-size: 13px; color: var(--texto-suave); }
@@ -836,3 +849,83 @@ a { color: var(--azul); }
   .acciones-portada .boton { flex: 1 1 auto; justify-content: center; }
   .etiqueta-filtro { min-width: 100%; }
 }
+
+/* =====================================================================
+   Logotipos
+   ===================================================================== */
+
+/* El logotipo de Estud-IA lleva la palabra "Estud-" en blanco, asi que
+   SOLO puede ir sobre fondo oscuro. Nunca sobre el fondo claro. */
+
+.logotipo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0 0 18px;
+}
+
+.logotipo img {
+  display: block;
+  width: 340px;
+  max-width: 78vw;
+  height: auto;
+}
+
+.logotipo .anio {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  color: rgba(255, 255, 255, .5);
+}
+
+.masthead {
+  /* Bloque propio: si no, el enlace de regreso se le pega al lado. */
+  display: block;
+  width: fit-content;
+  margin-bottom: 20px;
+  line-height: 0;
+}
+
+.masthead img {
+  display: block;
+  width: 166px;
+  height: auto;
+}
+
+.masthead:hover { opacity: .85; }
+
+/* El sello de la Alcaldia es institucional: se usa tal cual, sin recolorear
+   ni deformar, y con aire alrededor. Trae su propia tarjeta blanca. */
+.pie-marcas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.pie-marcas .sello {
+  width: 132px;
+  height: auto;
+  flex: none;
+  background: var(--blanco);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.pie-marcas p { margin: 0; }
+.pie-marcas p + p { margin-top: 6px; }
+
+@media (max-width: 620px) {
+  .logotipo img { width: 250px; }
+  .logotipo .anio { font-size: 22px; }
+  .masthead img { width: 136px; }
+  .pie-marcas { gap: 14px; }
+  .pie-marcas .sello { width: 104px; }
+}
+
+/* Capa 1 naranja y Capa 2 cian: los dos colores de marca que no sirven
+   para texto, aqui como fondo con tinta oscura encima (5.59 y 6.19).
+   Va despues de la regla de .cabecera para ganarle al velo blanco. */
+.etiqueta-capa.capa-1 { background: var(--naranja); color: var(--texto); }
+.etiqueta-capa.capa-2 { background: var(--cian);    color: var(--texto); }

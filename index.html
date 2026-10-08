@@ -17,7 +17,10 @@
 <header class="portada">
   <div class="contenedor">
     <p class="sobretitulo">Secretaría de Desarrollo Económico · Medellín</p>
-    <h1>Estud-IA <span class="anio">2026</span></h1>
+    <h1 class="logotipo">
+      <img src="img/estud-ia.png" alt="Estud-IA" width="900" height="166">
+      <span class="anio">2026</span>
+    </h1>
     <p class="bajada">
       Formación gratuita en habilidades digitales para jóvenes y adultos del
       Distrito de Ciencia, Tecnología e Innovación. Seis líneas, dos capas de
@@ -118,8 +121,15 @@
 
 <footer class="pie-sitio">
   <div class="contenedor">
-    <p>Estud-IA 2026 · Secretaría de Desarrollo Económico, Distrito Especial de Medellín.</p>
-    <p class="menudo">Catálogo de cursos de Capa 1 y Capa 2. La oferta puede ajustarse durante la ejecución del programa.</p>
+    <div class="pie-marcas">
+      <img class="sello" src="img/alcaldia-medellin.png"
+           alt="Alcaldía de Medellín · Distrito de Ciencia, Tecnología e Innovación"
+           width="420" height="320">
+      <div>
+        <p>Estud-IA 2026 · Secretaría de Desarrollo Económico, Distrito Especial de Medellín.</p>
+        <p class="menudo">Catálogo de cursos de Capa 1 y Capa 2. La oferta puede ajustarse durante la ejecución del programa.</p>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -157,7 +167,7 @@
 
     return '' +
       '<a class="tarjeta-capa capa-' + numero + '" href="capa.html?n=' + numero + '">' +
-        '<span class="etiqueta-capa">Capa ' + numero + '</span>' +
+        '<span class="etiqueta-capa capa-' + numero + '">Capa ' + numero + '</span>' +
         '<h3>' + E.esc(info.nombre) + '</h3>' +
         '<p class="lema">' + E.esc(info.lema) + '</p>' +
         '<p class="detalle-capa">' + E.esc(info.detalle) + '</p>' +
