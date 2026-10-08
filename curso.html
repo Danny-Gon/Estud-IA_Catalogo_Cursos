@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curso · Estud-IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera cabecera-curso">
+  <div class="contenedor">
+    <a class="volver" href="index.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Volver al catálogo
+    </a>
+    <div id="cabecera-curso"></div>
+  </div>
+</header>
+
+<main class="contenedor detalle" id="contenido">
+  <p class="estado" id="cargando">Cargando el curso…</p>
+  <div id="cuerpo"></div>
+</main>
+
+<footer class="pie-sitio">
+  <div class="contenedor">
+    <p>Estud-IA · Programa de formación. Catálogo de Capa 1.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var LINEAS = {
+    programacion:   'Programación',
+    datos:          'Datos',
+    nube:           'Nube',
+    ciberseguridad: 'Ciberseguridad',
+    ia:             'Inteligencia Artificial',
+    marketing:      'Marketing'
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  var elCabecera = $('cabecera-curso');
+  var elCuerpo = $('cuerpo');
+  var elCargando = $('cargando');
+
+  /* ----- Carga de datos: igual que en index.html -----
+     fetch('cursos.json') y, si falla (file:// bloquea fetch por CORS),
+     el espejo cursos.js.
+  --------------------------------------------------- */
+  function cargarCursos() {
+    return fetch('cursos.json')
+      .then(function (r) {
+        if (!r.ok) { throw new Error('HTTP ' + r.status); }
+        return r.json();
+      })
+      .catch(function () { return cargarEspejo(); });
+  }
+
+  function cargarEspejo() {
+    return new Promise(function (resolver, rechazar) {
+      if (window.__CURSOS__) { return resolver(window.__CURSOS__); }
+      var s = document.createElement('script');
+      s.src = 'cursos.js';
+      s.onload = function () {
+        if (window.__CURSOS__) { resolver(window.__CURSOS__); }
+        else { rechazar(new Error('cursos.js no definió los datos.')); }
+      };
+      s.onerror = function () {
+        rechazar(new Error('No se encontró cursos.json ni cursos.js junto a esta página.'));
+      };
+      document.head.appendChild(s);
+    });
+  }
+
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function nombreLinea(cat) { return LINEAS[cat] || cat; }
+
+  var ICONO_RELOJ =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/>' +
+    '<path d="M12 7.5v5l3.2 2" stroke-linecap="round"/></svg>';
+
+  var ICONO_MODO =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="4.5" width="18.4" height="12" rx="1.8"/>' +
+    '<path d="M8.5 19.5h7" stroke-linecap="round"/></svg>';
+
+  var FLECHA =
+    '<svg class="flecha" viewBox="0 0 24 24" aria-hidden="true">' +
+    '<path d="M6 10l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  /* ----- Secciones ----- */
+
+  function plegable(titulo, contenidoHtml, abierto) {
+    return '<details class="plegable"' + (abierto ? ' open' : '') + '>' +
+             '<summary>' + esc(titulo) + FLECHA + '</summary>' +
+             '<div class="cuerpo">' + contenidoHtml + '</div>' +
+           '</details>';
+  }
+
+  function modulo(m, i) {
+    var items = (m.contenidos || []).map(function (c) {
+      return '<li>' + esc(c) + '</li>';
+    }).join('');
+
+    // El título ya viene como "M1 - Nombre": se parte para no repetir el código.
+    var partes = String(m.titulo || '').split(' - ');
+    var codigo = partes.length > 1 ? partes.shift() : 'M' + (i + 1);
+    var nombre = partes.join(' - ') || m.titulo || '';
+
+    return '<details class="plegable"' + (i === 0 ? ' open' : '') + '>' +
+             '<summary>' +
+               '<span class="num">' + esc(codigo) + '</span>' +
+               '<span>' + esc(nombre) + '</span>' +
+               FLECHA +
+             '</summary>' +
+             '<div class="cuerpo">' +
+               (items ? '<ul>' + items + '</ul>'
+                      : '<p>Contenidos por publicar.</p>') +
+             '</div>' +
+           '</details>';
+  }
+
+  function pintarCurso(c) {
+    document.title = c.nombre + ' · Estud-IA';
+
+    var ficha = '<span class="dato">' + ICONO_RELOJ + esc(c.duracion) + '</span>';
+    if (c.modalidad) {
+      ficha += '<span class="dato">' + ICONO_MODO + esc(c.modalidad) + '</span>';
+    }
+
+    elCabecera.innerHTML =
+      '<span class="chip-cat">' + esc(nombreLinea(c.categoria)) + '</span>' +
+      '<h1>' + esc(c.nombre) + '</h1>' +
+      '<div class="ficha">' + ficha + '</div>';
+
+    var html = '';
+
+    html += '<section class="bloque">' +
+              '<h2>Descripción</h2>' +
+              '<p>' + esc(c.descripcion) + '</p>' +
+            '</section>';
+
+    var herr = c.herramientas || [];
+    if (herr.length) {
+      html += '<section class="bloque">' +
+                '<h2>Herramientas requeridas</h2>' +
+                '<ul class="herramientas">' +
+                  herr.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('') +
+                '</ul>' +
+              '</section>';
+    }
+
+    if (c.perfil_entrada) {
+      html += plegable('Perfil de entrada', '<p>' + esc(c.perfil_entrada) + '</p>', false);
+    }
+    if (c.perfil_salida) {
+      html += plegable('Perfil de salida', '<p>' + esc(c.perfil_salida) + '</p>', false);
+    }
+
+    var mods = c.modulos || [];
+    if (mods.length) {
+      html += '<h2 class="modulos-titulo">Módulos ' +
+              '<span>· ' + mods.length + '</span></h2>' +
+              mods.map(modulo).join('');
+    }
+
+    html += '<p class="acciones">' +
+              '<a class="boton" href="index.html">' +
+                '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+                  '<path d="M14 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/>' +
+                '</svg>Volver al catálogo</a>' +
+            '</p>';
+
+    elCuerpo.innerHTML = html;
+  }
+
+  function noEncontrado(id) {
+    document.title = 'Curso no encontrado · Estud-IA';
+    elCabecera.innerHTML = '<h1>Curso no encontrado</h1>';
+    elCuerpo.innerHTML =
+      '<div class="estado">' +
+        '<h2>No existe un curso con ese identificador</h2>' +
+        (id ? '<p>Se buscó <code>' + esc(id) + '</code> y no está en el catálogo.</p>'
+            : '<p>La dirección no incluye el parámetro <code>?id=</code>.</p>') +
+      '</div>' +
+      '<p class="acciones"><a class="boton" href="index.html">Volver al catálogo</a></p>';
+  }
+
+  function fallo(mensaje) {
+    elCabecera.innerHTML = '<h1>No se pudo cargar el curso</h1>';
+    elCuerpo.innerHTML =
+      '<div class="estado"><p>' + esc(mensaje) + '</p></div>' +
+      '<p class="acciones"><a class="boton" href="index.html">Volver al catálogo</a></p>';
+  }
+
+  /* ----- Arranque ----- */
+
+  var id = new URLSearchParams(window.location.search).get('id');
+
+  cargarCursos().then(function (datos) {
+    elCargando.classList.add('oculto');
+
+    var lista = (datos && datos.cursos) || [];
+    var curso = null;
+    for (var i = 0; i < lista.length; i++) {
+      if (lista[i].id === id) { curso = lista[i]; break; }
+    }
+
+    if (curso) { pintarCurso(curso); }
+    else { noEncontrado(id); }
+  }).catch(function (err) {
+    elCargando.classList.add('oculto');
+    fallo(err.message);
+  });
+
+})();
+</script>
+
+</body>
+</html>

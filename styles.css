@@ -1,0 +1,524 @@
+/* Estud-IA — catálogo de cursos. CSS propio, sin frameworks. */
+
+:root {
+  --azul: #1a3a6b;
+  --azul-oscuro: #122a4f;
+  --azul-claro: #e8eef7;
+
+  --fondo: #f4f6f9;
+  --blanco: #ffffff;
+  --borde: #e2e7ef;
+
+  --texto: #1b2430;
+  --texto-suave: #5a6679;
+
+  --radio: 10px;
+  --sombra: 0 1px 2px rgba(27, 36, 48, .06), 0 4px 12px rgba(27, 36, 48, .05);
+  --sombra-alta: 0 2px 4px rgba(27, 36, 48, .08), 0 12px 28px rgba(27, 36, 48, .10);
+
+  --ancho: 1120px;
+  --gutter: 20px;
+}
+
+/* Un color por línea de formación. Se usa en el chip de la tarjeta. */
+.cat-programacion   { --cat: #1a3a6b; }
+.cat-datos          { --cat: #0c6b5e; }
+.cat-nube           { --cat: #2563a8; }
+.cat-ciberseguridad { --cat: #8a2b36; }
+.cat-ia             { --cat: #5b3a8e; }
+.cat-marketing      { --cat: #8a5411; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--fondo);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--azul); }
+
+.contenedor {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Accesibilidad: salto al contenido y foco visible. */
+.salto {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--blanco);
+  color: var(--azul);
+  padding: 10px 16px;
+  z-index: 10;
+}
+.salto:focus { left: 8px; top: 8px; }
+
+:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Encabezado ---------- */
+
+.cabecera {
+  background: var(--azul);
+  color: var(--blanco);
+  padding: 40px 0 36px;
+}
+
+.cabecera .marca {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.cabecera .marca .capa {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .16);
+}
+
+.cabecera p {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 16px;
+  color: rgba(255, 255, 255, .82);
+}
+
+/* ---------- Filtros ---------- */
+
+.filtros {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(244, 246, 249, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--borde);
+  padding: 14px 0;
+  margin-bottom: 28px;
+}
+
+.filtros .fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.filtros .conteo {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+
+.chip-filtro {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--texto);
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  padding: 7px 15px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+
+.chip-filtro:hover {
+  border-color: var(--azul);
+  color: var(--azul);
+}
+
+.chip-filtro[aria-pressed="true"] {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: var(--blanco);
+}
+
+/* ---------- Rejilla de tarjetas ---------- */
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+  padding-bottom: 56px;
+  list-style: none;
+  margin: 0;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+
+.tarjeta:hover,
+.tarjeta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-alta);
+  border-color: #c9d4e6;
+}
+
+.chip-cat {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  background: var(--cat, var(--azul));
+  border-radius: 999px;
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+
+.tarjeta h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--azul-oscuro);
+}
+
+/* Descripción truncada a 2 líneas. */
+.tarjeta .resumen {
+  margin: 0 0 18px;
+  font-size: 14.5px;
+  color: var(--texto-suave);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tarjeta .pie {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--borde);
+  font-size: 13.5px;
+  color: var(--texto-suave);
+}
+
+.tarjeta .pie .dato {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tarjeta .pie svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.tarjeta .ver {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--azul);
+}
+
+/* ---------- Estados ---------- */
+
+.estado {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 44px 24px;
+  margin-bottom: 56px;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+.estado h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: var(--texto);
+}
+
+.estado p { margin: 0 auto; max-width: 52ch; }
+
+.estado code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+.oculto { display: none !important; }
+
+/* ---------- Detalle del curso ---------- */
+
+.volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .85);
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.volver:hover { color: var(--blanco); text-decoration: underline; }
+
+.volver svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+/* Sobre el azul oscuro de la cabecera el color de linea no contrasta:
+   el chip del detalle usa un velo blanco en su lugar. */
+.cabecera-curso .chip-cat {
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, .18);
+}
+
+.cabecera-curso h1 {
+  margin: 0 0 14px;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  max-width: 28ch;
+}
+
+.ficha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, .82);
+}
+
+.ficha .dato { display: inline-flex; align-items: center; gap: 7px; }
+
+.ficha svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.detalle { padding: 32px 0 64px; }
+
+.bloque {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 24px;
+  margin-bottom: 18px;
+}
+
+.bloque > h2 {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.bloque p { margin: 0; }
+
+.herramientas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.herramientas li {
+  font-size: 14px;
+  background: var(--azul-claro);
+  color: var(--azul-oscuro);
+  border-radius: 6px;
+  padding: 5px 11px;
+}
+
+/* Secciones colapsables: <details> nativo, sin JS. */
+.plegable {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.plegable > summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 22px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--azul-oscuro);
+  list-style: none;
+}
+
+.plegable > summary::-webkit-details-marker { display: none; }
+
+.plegable > summary:hover { background: #fafbfd; }
+
+.plegable > summary .flecha {
+  margin-left: auto;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  stroke: var(--texto-suave);
+  fill: none;
+  stroke-width: 1.8;
+  transition: transform .18s;
+}
+
+.plegable[open] > summary .flecha { transform: rotate(180deg); }
+
+.plegable > summary .num {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--azul-claro);
+  color: var(--azul);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.plegable .cuerpo {
+  padding: 4px 22px 20px;
+  border-top: 1px solid var(--borde);
+}
+
+.plegable .cuerpo p { margin: 16px 0 0; }
+
+.plegable .cuerpo ul {
+  margin: 16px 0 0;
+  padding-left: 22px;
+}
+
+.plegable .cuerpo li { margin-bottom: 7px; }
+
+.modulos-titulo {
+  margin: 34px 0 14px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.modulos-titulo span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--texto-suave);
+}
+
+.acciones { margin-top: 32px; }
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blanco);
+  background: var(--azul);
+  border-radius: 8px;
+  padding: 12px 22px;
+  text-decoration: none;
+  transition: background .15s;
+}
+
+.boton:hover { background: var(--azul-oscuro); }
+
+.boton svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+.pie-sitio {
+  border-top: 1px solid var(--borde);
+  padding: 24px 0 40px;
+  font-size: 13.5px;
+  color: var(--texto-suave);
+}
+
+.pie-sitio p { margin: 0; }
+
+/* ---------- Móvil ---------- */
+
+@media (max-width: 620px) {
+  .cabecera { padding: 28px 0 24px; }
+  .cabecera .marca { font-size: 26px; }
+  .cabecera-curso h1 { font-size: 24px; }
+  .rejilla { grid-template-columns: 1fr; gap: 14px; }
+  .filtros .fila { gap: 7px; }
+  .filtros .conteo { margin-left: 0; width: 100%; order: 3; }
+  .chip-filtro { font-size: 13.5px; padding: 6px 13px; }
+  .bloque, .plegable > summary { padding-left: 16px; padding-right: 16px; }
+  .plegable .cuerpo { padding-left: 16px; padding-right: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  .tarjeta:hover { transform: none; }
+}
+
+@media print {
+  .filtros, .volver, .acciones, .salto { display: none; }
+  .cabecera { background: none; color: #000; }
+  .cabecera p, .ficha { color: #333; }
+  .plegable .cuerpo { display: block !important; }
+}

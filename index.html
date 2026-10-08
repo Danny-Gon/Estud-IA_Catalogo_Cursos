@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estud-IA · Catálogo de cursos</title>
+<meta name="description" content="Catálogo de los 18 cursos de Capa 1 del programa de formación Estud-IA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="salto" href="#catalogo">Saltar al catálogo</a>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <h1 class="marca">Estud-IA <span class="capa">Capa 1</span></h1>
+    <p>Formación gratuita en tecnología para la ciudadanía de Medellín.
+       Dieciocho cursos de 60 horas, en seis líneas, sin requisitos previos.</p>
+  </div>
+</header>
+
+<nav class="filtros" aria-label="Filtrar por línea de formación">
+  <div class="contenedor fila" id="filtros"></div>
+</nav>
+
+<main class="contenedor" id="catalogo">
+
+  <p class="estado" id="cargando">Cargando el catálogo…</p>
+
+  <div class="estado oculto" id="error">
+    <h2>No se pudo cargar el catálogo</h2>
+    <p id="error-detalle"></p>
+  </div>
+
+  <div class="estado oculto" id="vacio">
+    <h2>Sin cursos en esta línea</h2>
+    <p>Prueba con otra línea de formación o vuelve a «Todas».</p>
+  </div>
+
+  <ul class="rejilla oculto" id="rejilla"></ul>
+
+</main>
+
+<footer class="pie-sitio">
+  <div class="contenedor">
+    <p>Estud-IA · Programa de formación. Catálogo de Capa 1.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // Nombre visible de cada línea de formación. Las claves son los valores
+  // del campo "categoria" en cursos.json.
+  var LINEAS = {
+    programacion:   'Programación',
+    datos:          'Datos',
+    nube:           'Nube',
+    ciberseguridad: 'Ciberseguridad',
+    ia:             'Inteligencia Artificial',
+    marketing:      'Marketing'
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  var elFiltros = $('filtros');
+  var elRejilla = $('rejilla');
+  var elCargando = $('cargando');
+  var elError = $('error');
+  var elVacio = $('vacio');
+
+  var cursos = [];
+  var filtro = 'todas';
+
+  /* ----- Carga de datos -----------------------------------------------
+     Primero fetch('cursos.json'), como corresponde en Vercel. Si falla
+     -- el caso típico es abrir el index con file://, donde el navegador
+     bloquea fetch por CORS -- se cae al espejo cursos.js, que define
+     window.__CURSOS__ con exactamente el mismo contenido.
+  ------------------------------------------------------------------- */
+  function cargarCursos() {
+    return fetch('cursos.json')
+      .then(function (r) {
+        if (!r.ok) { throw new Error('HTTP ' + r.status); }
+        return r.json();
+      })
+      .catch(function () { return cargarEspejo(); });
+  }
+
+  function cargarEspejo() {
+    return new Promise(function (resolver, rechazar) {
+      if (window.__CURSOS__) { return resolver(window.__CURSOS__); }
+      var s = document.createElement('script');
+      s.src = 'cursos.js';
+      s.onload = function () {
+        if (window.__CURSOS__) { resolver(window.__CURSOS__); }
+        else { rechazar(new Error('cursos.js no definió los datos.')); }
+      };
+      s.onerror = function () {
+        rechazar(new Error('No se encontró cursos.json ni cursos.js junto a esta página.'));
+      };
+      document.head.appendChild(s);
+    });
+  }
+
+  /* ----- Utilidades ----- */
+
+  // Todo texto del JSON pasa por aquí antes de entrar al DOM.
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function nombreLinea(cat) {
+    return LINEAS[cat] || cat;
+  }
+
+  function plural(n, uno, varios) {
+    return n + ' ' + (n === 1 ? uno : varios);
+  }
+
+  /* ----- Filtros ----- */
+
+  function pintarFiltros() {
+    // Solo se ofrecen las líneas que existen en los datos, en el orden de LINEAS.
+    var presentes = Object.keys(LINEAS).filter(function (cat) {
+      return cursos.some(function (c) { return c.categoria === cat; });
+    });
+
+    // Cualquier categoría nueva en el JSON aparece igual, sin tocar este archivo.
+    cursos.forEach(function (c) {
+      if (presentes.indexOf(c.categoria) === -1) { presentes.push(c.categoria); }
+    });
+
+    var html = boton('todas', 'Todas', cursos.length);
+    presentes.forEach(function (cat) {
+      var n = cursos.filter(function (c) { return c.categoria === cat; }).length;
+      html += boton(cat, nombreLinea(cat), n);
+    });
+
+    elFiltros.innerHTML = html + '<p class="conteo" id="conteo"></p>';
+
+    elFiltros.addEventListener('click', function (ev) {
+      var b = ev.target.closest('.chip-filtro');
+      if (!b) { return; }
+      filtro = b.dataset.cat;
+      Array.prototype.forEach.call(
+        elFiltros.querySelectorAll('.chip-filtro'),
+        function (otro) {
+          otro.setAttribute('aria-pressed', String(otro === b));
+        }
+      );
+      pintarCursos();
+    });
+  }
+
+  function boton(cat, etiqueta, n) {
+    return '<button type="button" class="chip-filtro" data-cat="' + esc(cat) + '"' +
+           ' aria-pressed="' + (cat === filtro) + '">' +
+           esc(etiqueta) + ' (' + n + ')</button>';
+  }
+
+  /* ----- Tarjetas ----- */
+
+  var ICONO_RELOJ =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/>' +
+    '<path d="M12 7.5v5l3.2 2" stroke-linecap="round"/></svg>';
+
+  var ICONO_MODULOS =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="5" rx="1.5"/>' +
+    '<rect x="3.5" y="14.5" width="17" height="5" rx="1.5"/></svg>';
+
+  function tarjeta(c) {
+    var n = (c.modulos || []).length;
+    return '' +
+      '<li>' +
+      '<a class="tarjeta cat-' + esc(c.categoria) + '" href="curso.html?id=' +
+        encodeURIComponent(c.id) + '">' +
+        '<span class="chip-cat">' + esc(nombreLinea(c.categoria)) + '</span>' +
+        '<h2>' + esc(c.nombre) + '</h2>' +
+        '<p class="resumen">' + esc(c.descripcion) + '</p>' +
+        '<span class="pie">' +
+          '<span class="dato">' + ICONO_RELOJ + esc(c.duracion) + '</span>' +
+          '<span class="dato">' + ICONO_MODULOS + plural(n, 'módulo', 'módulos') + '</span>' +
+          '<span class="ver" aria-hidden="true">Ver →</span>' +
+        '</span>' +
+      '</a>' +
+      '</li>';
+  }
+
+  function pintarCursos() {
+    var lista = (filtro === 'todas')
+      ? cursos
+      : cursos.filter(function (c) { return c.categoria === filtro; });
+
+    elRejilla.innerHTML = lista.map(tarjeta).join('');
+    elRejilla.classList.toggle('oculto', lista.length === 0);
+    elVacio.classList.toggle('oculto', lista.length !== 0);
+
+    var conteo = $('conteo');
+    if (conteo) {
+      conteo.textContent = (filtro === 'todas')
+        ? plural(cursos.length, 'curso', 'cursos')
+        : plural(lista.length, 'curso', 'cursos') + ' en ' + nombreLinea(filtro);
+    }
+  }
+
+  /* ----- Arranque ----- */
+
+  cargarCursos().then(function (datos) {
+    cursos = (datos && datos.cursos) || [];
+    elCargando.classList.add('oculto');
+
+    if (!cursos.length) {
+      elError.classList.remove('oculto');
+      $('error-detalle').textContent = 'El archivo cargó, pero no contiene cursos.';
+      return;
+    }
+
+    // Orden estable: por línea (según LINEAS) y luego por el campo "orden".
+    var peso = Object.keys(LINEAS);
+    cursos.sort(function (a, b) {
+      var pa = peso.indexOf(a.categoria), pb = peso.indexOf(b.categoria);
+      if (pa === -1) { pa = 99; }
+      if (pb === -1) { pb = 99; }
+      return pa - pb || (a.orden || 0) - (b.orden || 0);
+    });
+
+    pintarFiltros();
+    pintarCursos();
+  }).catch(function (err) {
+    elCargando.classList.add('oculto');
+    elError.classList.remove('oculto');
+    $('error-detalle').textContent = err.message;
+  });
+
+})();
+</script>
+
+</body>
+</html>
