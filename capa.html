@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursos · Estud-IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="salto" href="#catalogo">Saltar al catálogo</a>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="volver" href="index.html" id="volver">Volver al inicio</a>
+    <div id="cabecera-capa"></div>
+  </div>
+</header>
+
+<nav class="filtros" aria-label="Filtros del catálogo">
+  <div class="contenedor" id="filtros"></div>
+</nav>
+
+<main class="contenedor" id="catalogo">
+
+  <p class="estado" id="cargando">Cargando el catálogo…</p>
+
+  <div class="estado oculto" id="error">
+    <h2>No se pudo cargar el catálogo</h2>
+    <p id="error-detalle"></p>
+    <p class="acciones"><a class="boton" href="index.html">Volver al inicio</a></p>
+  </div>
+
+  <div class="estado oculto" id="vacio">
+    <h2>Sin cursos con estos filtros</h2>
+    <p>Prueba con otra combinación o vuelve a «Todas».</p>
+  </div>
+
+  <ul class="rejilla oculto" id="rejilla"></ul>
+
+</main>
+
+<footer class="pie-sitio">
+  <div class="contenedor">
+    <p>Estud-IA 2026 · Secretaría de Desarrollo Económico, Distrito Especial de Medellín.</p>
+  </div>
+</footer>
+
+<script src="datos.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var E = window.EstudIA;
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ?n=1 o ?n=2. Si falta o no es válido, se asume Capa 1.
+  var capa = parseInt(new URLSearchParams(window.location.search).get('n'), 10);
+  if (!capa || capa < 1) { capa = 1; }
+
+  var cursos = [];
+  var fLinea = 'todas';
+  var fNivel = 'todos';
+
+  /* ---- Cabecera ---- */
+
+  function pintarCabecera(meta) {
+    var info = E.CAPAS[capa] || { nombre: 'Capa ' + capa, lema: '' };
+    document.title = 'Capa ' + capa + ' · ' + info.nombre + ' · Estud-IA';
+
+    var ficha = '';
+    if (meta && meta.duracion) {
+      ficha += '<span class="dato">' + E.ICONOS.reloj + E.esc(meta.duracion) + '</span>';
+    }
+    if (meta && meta.modalidad) {
+      ficha += '<span class="dato">' + E.ICONOS.modalidad + E.esc(meta.modalidad) + '</span>';
+    }
+
+    $('cabecera-capa').innerHTML =
+      '<span class="etiqueta-capa">Capa ' + capa + '</span>' +
+      '<h1>' + E.esc(info.nombre) + '</h1>' +
+      (info.lema ? '<p class="bajada">' + E.esc(info.lema) + '</p>' : '') +
+      (ficha ? '<div class="ficha">' + ficha + '</div>' : '');
+  }
+
+  /* ---- Filtros ---- */
+
+  function boton(grupo, valor, etiqueta, n, activo) {
+    return '<button type="button" class="chip-filtro" data-grupo="' + grupo + '"' +
+           ' data-valor="' + E.esc(valor) + '" aria-pressed="' + activo + '">' +
+           E.esc(etiqueta) + ' (' + n + ')</button>';
+  }
+
+  function pintarFiltros() {
+    var html = '';
+
+    // Línea de formación, en el orden de LINEAS.
+    var presentes = Object.keys(E.LINEAS).filter(function (cat) {
+      return cursos.some(function (c) { return c.categoria === cat; });
+    });
+    cursos.forEach(function (c) {
+      if (presentes.indexOf(c.categoria) === -1) { presentes.push(c.categoria); }
+    });
+
+    html += '<div class="grupo-filtro"><span class="etiqueta-filtro">Línea</span>' +
+            boton('linea', 'todas', 'Todas', cursos.length, fLinea === 'todas');
+    presentes.forEach(function (cat) {
+      var n = cursos.filter(function (c) { return c.categoria === cat; }).length;
+      html += boton('linea', cat, E.nombreLinea(cat), n, fLinea === cat);
+    });
+    html += '</div>';
+
+    // Nivel: solo si esta capa los tiene (Capa 1 no).
+    var conNivel = Object.keys(E.NIVELES).filter(function (niv) {
+      return cursos.some(function (c) { return c.nivel === niv; });
+    });
+    if (conNivel.length) {
+      html += '<div class="grupo-filtro"><span class="etiqueta-filtro">Nivel</span>' +
+              boton('nivel', 'todos', 'Todos', cursos.length, fNivel === 'todos');
+      conNivel.forEach(function (niv) {
+        var n = cursos.filter(function (c) { return c.nivel === niv; }).length;
+        html += boton('nivel', niv, E.NIVELES[niv], n, fNivel === niv);
+      });
+      html += '</div>';
+    }
+
+    html += '<p class="conteo" id="conteo"></p>';
+    $('filtros').innerHTML = html;
+  }
+
+  $('filtros').addEventListener('click', function (ev) {
+    var b = ev.target.closest('.chip-filtro');
+    if (!b) { return; }
+    if (b.dataset.grupo === 'linea') { fLinea = b.dataset.valor; }
+    else { fNivel = b.dataset.valor; }
+
+    Array.prototype.forEach.call(
+      $('filtros').querySelectorAll('.chip-filtro'),
+      function (otro) {
+        var activo = (otro.dataset.grupo === 'linea')
+          ? otro.dataset.valor === fLinea
+          : otro.dataset.valor === fNivel;
+        otro.setAttribute('aria-pressed', String(activo));
+      }
+    );
+    pintarCursos();
+  });
+
+  /* ---- Tarjetas ---- */
+
+  function tarjeta(c) {
+    var n = (c.modulos || []).length;
+    var nivel = E.nombreNivel(c.nivel);
+    return '' +
+      '<li>' +
+      '<a class="tarjeta cat-' + E.esc(c.categoria) + '" href="curso.html?id=' +
+        encodeURIComponent(c.id) + '">' +
+        '<span class="encabezado-tarjeta">' +
+          '<span class="chip-cat">' + E.esc(E.nombreLinea(c.categoria)) + '</span>' +
+          (nivel ? '<span class="chip-nivel">' + E.esc(nivel) + '</span>' : '') +
+        '</span>' +
+        '<h2>' + E.esc(c.nombre) + '</h2>' +
+        '<p class="resumen">' + E.esc(c.descripcion) + '</p>' +
+        '<span class="pie">' +
+          '<span class="dato">' + E.ICONOS.modulos + E.plural(n, 'módulo', 'módulos') + '</span>' +
+          '<span class="ver" aria-hidden="true">Ver →</span>' +
+        '</span>' +
+      '</a>' +
+      '</li>';
+  }
+
+  function pintarCursos() {
+    var lista = cursos.filter(function (c) {
+      return (fLinea === 'todas' || c.categoria === fLinea) &&
+             (fNivel === 'todos'  || c.nivel === fNivel);
+    });
+
+    $('rejilla').innerHTML = lista.map(tarjeta).join('');
+    $('rejilla').classList.toggle('oculto', lista.length === 0);
+    $('vacio').classList.toggle('oculto', lista.length !== 0);
+
+    var conteo = $('conteo');
+    if (conteo) {
+      conteo.textContent = (lista.length === cursos.length)
+        ? E.plural(cursos.length, 'curso', 'cursos')
+        : E.plural(lista.length, 'curso', 'cursos') + ' de ' + cursos.length;
+    }
+  }
+
+  /* ---- Arranque ---- */
+
+  E.cargarCursos().then(function (doc) {
+    $('cargando').classList.add('oculto');
+
+    var todos = (doc && doc.cursos) || [];
+    cursos = E.ordenar(todos.filter(function (c) { return c.capa === capa; }));
+
+    if (!cursos.length) {
+      $('error').classList.remove('oculto');
+      $('error-detalle').textContent =
+        'No hay cursos publicados para la Capa ' + capa + '.';
+      $('cabecera-capa').innerHTML = '<h1>Capa ' + capa + '</h1>';
+      return;
+    }
+
+    pintarCabecera(E.datosCapa(doc, capa));
+    pintarFiltros();
+    pintarCursos();
+
+  }).catch(function (err) {
+    $('cargando').classList.add('oculto');
+    $('cabecera-capa').innerHTML = '<h1>Catálogo</h1>';
+    $('error').classList.remove('oculto');
+    $('error-detalle').textContent = err.message;
+  });
+
+})();
+</script>
+
+</body>
+</html>

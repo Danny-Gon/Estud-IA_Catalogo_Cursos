@@ -15,12 +15,7 @@
 
 <header class="cabecera cabecera-curso">
   <div class="contenedor">
-    <a class="volver" href="index.html">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M14 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Volver al catálogo
-    </a>
+    <a class="volver" href="index.html" id="volver">Volver</a>
     <div id="cabecera-curso"></div>
   </div>
 </header>
@@ -32,90 +27,32 @@
 
 <footer class="pie-sitio">
   <div class="contenedor">
-    <p>Estud-IA · Programa de formación. Catálogo de Capa 1.</p>
+    <p>Estud-IA 2026 · Secretaría de Desarrollo Económico, Distrito Especial de Medellín.</p>
   </div>
 </footer>
 
+<script src="datos.js"></script>
 <script>
 (function () {
   'use strict';
 
-  var LINEAS = {
-    programacion:   'Programación',
-    datos:          'Datos',
-    nube:           'Nube',
-    ciberseguridad: 'Ciberseguridad',
-    ia:             'Inteligencia Artificial',
-    marketing:      'Marketing'
-  };
-
+  var E = window.EstudIA;
   var $ = function (id) { return document.getElementById(id); };
 
-  var elCabecera = $('cabecera-curso');
-  var elCuerpo = $('cuerpo');
-  var elCargando = $('cargando');
+  var id = new URLSearchParams(window.location.search).get('id');
 
-  /* ----- Carga de datos: igual que en index.html -----
-     fetch('cursos.json') y, si falla (file:// bloquea fetch por CORS),
-     el espejo cursos.js.
-  --------------------------------------------------- */
-  function cargarCursos() {
-    return fetch('cursos.json')
-      .then(function (r) {
-        if (!r.ok) { throw new Error('HTTP ' + r.status); }
-        return r.json();
-      })
-      .catch(function () { return cargarEspejo(); });
-  }
+  /* ---- Secciones ---- */
 
-  function cargarEspejo() {
-    return new Promise(function (resolver, rechazar) {
-      if (window.__CURSOS__) { return resolver(window.__CURSOS__); }
-      var s = document.createElement('script');
-      s.src = 'cursos.js';
-      s.onload = function () {
-        if (window.__CURSOS__) { resolver(window.__CURSOS__); }
-        else { rechazar(new Error('cursos.js no definió los datos.')); }
-      };
-      s.onerror = function () {
-        rechazar(new Error('No se encontró cursos.json ni cursos.js junto a esta página.'));
-      };
-      document.head.appendChild(s);
-    });
-  }
-
-  function esc(t) {
-    return String(t == null ? '' : t)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-  }
-
-  function nombreLinea(cat) { return LINEAS[cat] || cat; }
-
-  var ICONO_RELOJ =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/>' +
-    '<path d="M12 7.5v5l3.2 2" stroke-linecap="round"/></svg>';
-
-  var ICONO_MODO =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="4.5" width="18.4" height="12" rx="1.8"/>' +
-    '<path d="M8.5 19.5h7" stroke-linecap="round"/></svg>';
-
-  var FLECHA =
-    '<svg class="flecha" viewBox="0 0 24 24" aria-hidden="true">' +
-    '<path d="M6 10l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-
-  /* ----- Secciones ----- */
-
-  function plegable(titulo, contenidoHtml, abierto) {
-    return '<details class="plegable"' + (abierto ? ' open' : '') + '>' +
-             '<summary>' + esc(titulo) + FLECHA + '</summary>' +
+  function plegable(titulo, contenidoHtml) {
+    return '<details class="plegable">' +
+             '<summary>' + E.esc(titulo) + E.ICONOS.flecha + '</summary>' +
              '<div class="cuerpo">' + contenidoHtml + '</div>' +
            '</details>';
   }
 
   function modulo(m, i) {
     var items = (m.contenidos || []).map(function (c) {
-      return '<li>' + esc(c) + '</li>';
+      return '<li>' + E.esc(c) + '</li>';
     }).join('');
 
     // El título ya viene como "M1 - Nombre": se parte para no repetir el código.
@@ -125,9 +62,9 @@
 
     return '<details class="plegable"' + (i === 0 ? ' open' : '') + '>' +
              '<summary>' +
-               '<span class="num">' + esc(codigo) + '</span>' +
-               '<span>' + esc(nombre) + '</span>' +
-               FLECHA +
+               '<span class="num">' + E.esc(codigo) + '</span>' +
+               '<span>' + E.esc(nombre) + '</span>' +
+               E.ICONOS.flecha +
              '</summary>' +
              '<div class="cuerpo">' +
                (items ? '<ul>' + items + '</ul>'
@@ -137,23 +74,33 @@
   }
 
   function pintarCurso(c) {
+    var info = E.CAPAS[c.capa] || { nombre: 'Capa ' + c.capa };
+    var nivel = E.nombreNivel(c.nivel);
     document.title = c.nombre + ' · Estud-IA';
 
-    var ficha = '<span class="dato">' + ICONO_RELOJ + esc(c.duracion) + '</span>';
+    // El enlace de regreso lleva al catálogo de SU capa, no al inicio.
+    var volver = $('volver');
+    volver.href = 'capa.html?n=' + c.capa;
+    volver.innerHTML = E.ICONOS.atras + 'Capa ' + c.capa + ' · ' + E.esc(info.nombre);
+
+    var ficha = '<span class="dato">' + E.ICONOS.reloj + E.esc(c.duracion) + '</span>';
     if (c.modalidad) {
-      ficha += '<span class="dato">' + ICONO_MODO + esc(c.modalidad) + '</span>';
+      ficha += '<span class="dato">' + E.ICONOS.modalidad + E.esc(c.modalidad) + '</span>';
     }
 
-    elCabecera.innerHTML =
-      '<span class="chip-cat">' + esc(nombreLinea(c.categoria)) + '</span>' +
-      '<h1>' + esc(c.nombre) + '</h1>' +
+    $('cabecera-curso').innerHTML =
+      '<span class="encabezado-tarjeta">' +
+        '<span class="chip-cat">' + E.esc(E.nombreLinea(c.categoria)) + '</span>' +
+        (nivel ? '<span class="chip-nivel">' + E.esc(nivel) + '</span>' : '') +
+      '</span>' +
+      '<h1>' + E.esc(c.nombre) + '</h1>' +
       '<div class="ficha">' + ficha + '</div>';
 
     var html = '';
 
     html += '<section class="bloque">' +
               '<h2>Descripción</h2>' +
-              '<p>' + esc(c.descripcion) + '</p>' +
+              '<p>' + E.esc(c.descripcion) + '</p>' +
             '</section>';
 
     var herr = c.herramientas || [];
@@ -161,62 +108,64 @@
       html += '<section class="bloque">' +
                 '<h2>Herramientas requeridas</h2>' +
                 '<ul class="herramientas">' +
-                  herr.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('') +
+                  herr.map(function (h) { return '<li>' + E.esc(h) + '</li>'; }).join('') +
                 '</ul>' +
               '</section>';
     }
 
     if (c.perfil_entrada) {
-      html += plegable('Perfil de entrada', '<p>' + esc(c.perfil_entrada) + '</p>', false);
+      html += plegable('Perfil de entrada', '<p>' + E.esc(c.perfil_entrada) + '</p>');
     }
     if (c.perfil_salida) {
-      html += plegable('Perfil de salida', '<p>' + esc(c.perfil_salida) + '</p>', false);
+      html += plegable('Perfil de salida', '<p>' + E.esc(c.perfil_salida) + '</p>');
     }
 
     var mods = c.modulos || [];
     if (mods.length) {
-      html += '<h2 class="modulos-titulo">Módulos ' +
-              '<span>· ' + mods.length + '</span></h2>' +
+      html += '<h2 class="modulos-titulo">Módulos <span>· ' + mods.length + '</span></h2>' +
               mods.map(modulo).join('');
     }
 
     html += '<p class="acciones">' +
-              '<a class="boton" href="index.html">' +
-                '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-                  '<path d="M14 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/>' +
-                '</svg>Volver al catálogo</a>' +
+              '<a class="boton" href="capa.html?n=' + c.capa + '">' +
+                E.ICONOS.atras + 'Ver los demás cursos de Capa ' + c.capa + '</a>' +
+              '<a class="boton secundario" href="index.html">Inicio</a>' +
             '</p>';
 
-    elCuerpo.innerHTML = html;
+    $('cuerpo').innerHTML = html;
   }
 
   function noEncontrado(id) {
     document.title = 'Curso no encontrado · Estud-IA';
-    elCabecera.innerHTML = '<h1>Curso no encontrado</h1>';
-    elCuerpo.innerHTML =
+    $('volver').innerHTML = E.ICONOS.atras + 'Volver al inicio';
+    $('cabecera-curso').innerHTML = '<h1>Curso no encontrado</h1>';
+    $('cuerpo').innerHTML =
       '<div class="estado">' +
         '<h2>No existe un curso con ese identificador</h2>' +
-        (id ? '<p>Se buscó <code>' + esc(id) + '</code> y no está en el catálogo.</p>'
+        (id ? '<p>Se buscó <code>' + E.esc(id) + '</code> y no está en el catálogo.</p>'
             : '<p>La dirección no incluye el parámetro <code>?id=</code>.</p>') +
       '</div>' +
-      '<p class="acciones"><a class="boton" href="index.html">Volver al catálogo</a></p>';
+      '<p class="acciones">' +
+        '<a class="boton" href="capa.html?n=1">Cursos de Capa 1</a>' +
+        '<a class="boton secundario" href="capa.html?n=2">Cursos de Capa 2</a>' +
+      '</p>';
   }
 
   function fallo(mensaje) {
-    elCabecera.innerHTML = '<h1>No se pudo cargar el curso</h1>';
-    elCuerpo.innerHTML =
-      '<div class="estado"><p>' + esc(mensaje) + '</p></div>' +
-      '<p class="acciones"><a class="boton" href="index.html">Volver al catálogo</a></p>';
+    $('cabecera-curso').innerHTML = '<h1>No se pudo cargar el curso</h1>';
+    $('cuerpo').innerHTML =
+      '<div class="estado"><p>' + E.esc(mensaje) + '</p></div>' +
+      '<p class="acciones"><a class="boton" href="index.html">Volver al inicio</a></p>';
   }
 
-  /* ----- Arranque ----- */
+  /* ---- Arranque ---- */
 
-  var id = new URLSearchParams(window.location.search).get('id');
+  $('volver').innerHTML = E.ICONOS.atras + 'Volver';
 
-  cargarCursos().then(function (datos) {
-    elCargando.classList.add('oculto');
+  E.cargarCursos().then(function (doc) {
+    $('cargando').classList.add('oculto');
 
-    var lista = (datos && datos.cursos) || [];
+    var lista = (doc && doc.cursos) || [];
     var curso = null;
     for (var i = 0; i < lista.length; i++) {
       if (lista[i].id === id) { curso = lista[i]; break; }
@@ -225,7 +174,7 @@
     if (curso) { pintarCurso(curso); }
     else { noEncontrado(id); }
   }).catch(function (err) {
-    elCargando.classList.add('oculto');
+    $('cargando').classList.add('oculto');
     fallo(err.message);
   });
 

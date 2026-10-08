@@ -1,48 +1,74 @@
 # Estud-IA · Catálogo de cursos
 
-Sitio estático con los 18 cursos de Capa 1. Sin frameworks: HTML, CSS y
-JavaScript vanilla. No usa `localStorage` ni cookies.
+Sitio estatico con los 36 cursos de Capa 1 y Capa 2. Sin frameworks: HTML,
+CSS y JavaScript vanilla. No usa `localStorage` ni cookies.
 
-## Deploy en Vercel en 3 pasos
+**En línea:** <https://estudia-rust.vercel.app>
 
-1. **Instala la CLI** (una sola vez, necesita Node.js):
+## Ya está desplegado
+
+Esta carpeta es un repositorio de Git conectado a GitHub, y GitHub está
+conectado a Vercel. **Cada `git push` a `main` vuelve a publicar el sitio**, sin
+build ni comandos extra.
+
+```
+Capa 1.xlsx + Capa 2.xlsx  →  convertir_cursos.py  →  cursos.json + cursos.js
+                           →  git push  →  Vercel
+```
+
+## Dónde vive cada cosa
+
+Esta carpeta está *dentro* de otra con el mismo nombre. La de afuera guarda el
+Excel y el conversor; la de adentro —esta— es el sitio y lo único que se publica:
+
+```
+Estud-IA_Catalogo_Cursos/            ← el proyecto
+├── Plan estudio/
+│   ├── Capa 1.xlsx                  ← la fuente real de los cursos
+│   └── Capa 2.xlsx                  ← idem
+├── convertir_cursos.py              ← se corre desde AQUI
+└── Estud-IA_Catalogo_Cursos/        ← el sitio (este repo, lo que ve Vercel)
+    ├── index.html                   ← portada del programa
+    ├── capa.html                     ← catalogo de una capa
+    ├── curso.html                    ← detalle de un curso
+    ├── datos.js                      ← logica compartida
+    ├── styles.css
+    ├── cursos.json
+    └── cursos.js
+```
+
+## Actualizar los cursos
+
+**El origen es el Excel, no el JSON.** Editar `cursos.json` a mano no sirve: la
+siguiente corrida del conversor lo sobrescribe.
+
+1. Edita `Plan estudio/Capa 1.xlsx` o `Plan estudio/Capa 2.xlsx`.
+2. Desde la carpeta de afuera, corre el conversor. Regenera `cursos.json` **y**
+   `cursos.js` dentro del sitio, así que no hay un segundo paso que olvidar:
 
    ```bash
-   npm install -g vercel
+   python convertir_cursos.py
    ```
 
-2. **Entra a esta carpeta y despliega:**
+3. Publica:
 
    ```bash
-   cd Estud-IA_Catalogo_Cursos
-   vercel
+   git add . ; git commit -m "Actualiza cursos" ; git push
    ```
 
-   Acepta las respuestas por defecto. Cuando pregunte *In which directory is
-   your code located?* responde `./`. No hay build: Vercel detecta un sitio
-   estático y sube los archivos tal cual.
-
-3. **Publica en producción:**
-
-   ```bash
-   vercel --prod
-   ```
-
-   Te devuelve la URL definitiva.
-
-> **Alternativa sin consola:** sube esta carpeta a un repositorio de GitHub y en
-> [vercel.com/new](https://vercel.com/new) impórtala. Deja *Framework Preset* en
-> **Other** y *Build Command* vacío. Cada `git push` vuelve a desplegar.
+Vercel detecta el push y republica en unos segundos.
 
 ## Archivos
 
 | Archivo | Para qué |
 |---|---|
-| `index.html` | Catálogo con los filtros por línea de formación. |
+| `index.html` | Portada: presentacion del programa y acceso a las dos capas. |
+| `capa.html` | Catalogo de una capa. Lee la capa de `?n=1` o `?n=2`. |
 | `curso.html` | Detalle de un curso. Lee el curso de `?id=`. |
+| `datos.js` | Carga de datos y utilidades que comparten las tres paginas. |
 | `styles.css` | Todos los estilos. |
-| `cursos.json` | **Los datos. Es el único archivo que editas.** |
-| `cursos.js` | Espejo generado de `cursos.json`. Ver abajo. |
+| `cursos.json` | Los datos. **Generado desde el Excel — no editar a mano.** |
+| `cursos.js` | Espejo de `cursos.json`, también generado. Ver abajo. |
 
 La URL de un curso es `curso.html?id=` seguido del campo `id` del JSON:
 
@@ -67,21 +93,16 @@ Vercel. Si el `fetch` falla, el sitio carga `cursos.js`, que es el mismo
 contenido envuelto en una asignación (`window.__CURSOS__ = {...}`) y sí se
 puede cargar desde `file://` con una etiqueta `<script>`.
 
-**Editas solo `cursos.json`.** Después regeneras el espejo con esta línea:
-
-```bash
-node -e "const fs=require('fs');const d=fs.readFileSync('cursos.json','utf8');JSON.parse(d);fs.writeFileSync('cursos.js','// Generado desde cursos.json. No editar a mano.\n'+'window.__CURSOS__ = '+d+';\n')"
-```
-
-Si olvidas regenerarlo, en Vercel no pasa nada (allí nunca se usa); solo
-quedaría desactualizado al abrir los archivos en local.
+**No hay que regenerarlo a mano:** `convertir_cursos.py` escribe los dos
+archivos en la misma corrida, así que no pueden quedar desfasados.
 
 Si no te interesa que funcione con doble clic, borra `cursos.js`: el sitio
 sigue funcionando en Vercel sin tocar nada más.
 
-## Cambiar los datos
+## Forma de los datos
 
-`cursos.json` tiene la forma:
+Esto es lo que produce el conversor. Sirve para entender el JSON, no para
+editarlo: los cambios se hacen en el Excel.
 
 ```json
 {
@@ -113,9 +134,13 @@ Notas:
   `LINEAS`, al inicio del `<script>` de cada HTML. Si agregas una categoría al
   JSON sin registrarla ahí, el filtro aparece igual, usando la clave como
   etiqueta.
-- `orden` es la posición del curso dentro de su línea, **no un nivel ni una
-  secuencia de prerrequisitos**: los 18 cursos de Capa 1 declaran que no exigen
-  conocimiento previo. Solo se usa para ordenar el listado.
+- `capa` vale `1` o `2`, y es lo que separa los dos catálogos.
+- `nivel` es `"basico"`, `"intermedio"` o `"avanzado"` **solo en Capa 2**. En
+  Capa 1 es `null`, porque sus 18 cursos declaran que no exigen conocimiento
+  previo: ahí no hay una secuencia de prerrequisitos. El filtro de nivel
+  aparece únicamente cuando la capa tiene niveles.
+- `orden` es la posición del curso dentro de su línea (1–3). Solo se usa para
+  ordenar el listado.
 - `ruta_platzi` y `base_conceptual` están en `null` porque esas celdas vienen
   vacías en el Excel de origen. Hoy el sitio no las muestra.
 - `herramientas` y `contenidos` son listas; el sitio las recorre, así que

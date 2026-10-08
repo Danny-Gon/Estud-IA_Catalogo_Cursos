@@ -1,9 +1,31 @@
 {
+  "capas": [
+    {
+      "numero": 1,
+      "cursos": 18,
+      "lineas": 6,
+      "modulos": 92,
+      "duracion": "60 horas",
+      "modalidad": "Virtual (sincrónico y asincrónico)",
+      "tiene_niveles": false
+    },
+    {
+      "numero": 2,
+      "cursos": 18,
+      "lineas": 6,
+      "modulos": 86,
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "tiene_niveles": true
+    }
+  ],
   "cursos": [
     {
       "id": "fundamentos-programacion-python",
+      "capa": 1,
       "categoria": "programacion",
       "orden": 1,
+      "nivel": null,
       "nombre": "Fundamentos de programación con Python",
       "descripcion": "Introducción a la lógica computacional acompañada por Asistentes de IA. Foco en la lectura y validación de código antes que, en la escritura desde cero, utilizando Python como lenguaje vehicular para comprender estructuras de datos, condicionales y ciclos, junto con control de versiones mediante Git. El enfoque esperado es el desarrollo de lógica computacional asistida por IA, lectura crítica y validación de sintaxis, y manejo básico de control de versiones con Git/GitHub como práctica transversal del curso.",
       "duracion": "60 horas",
@@ -58,8 +80,10 @@
     },
     {
       "id": "estructuras-datos-analisis-inicial-python",
+      "capa": 1,
       "categoria": "programacion",
       "orden": 2,
+      "nivel": null,
       "nombre": "Estructuras de datos y análisis inicial con Python",
       "descripcion": "Curso introductorio que combina las bases de la programación en Python con el trabajo inicial sobre datos. Aborda estructuras de datos avanzadas —diccionarios, conjuntos y comprensión de listas— para organizar y transformar información, la lectura y escritura de archivos CSV y TXT, y el análisis exploratorio con pandas sobre datos reales. El enfoque esperado es la selección crítica de la estructura de datos adecuada para cada problema y el uso de asistentes de IA para proponer transformaciones que el estudiante lee, valida y corrige antes de ejecutarlas, con control de versiones mediante Git como práctica transversal del curso.",
       "duracion": "60 horas",
@@ -140,8 +164,10 @@
     },
     {
       "id": "programacion-asistida-ia-idea-programa-funcional",
+      "capa": 1,
       "categoria": "programacion",
       "orden": 3,
+      "nivel": null,
       "nombre": "Programación asistida por IA: de la idea al programa funcional",
       "descripcion": "Curso introductorio que forma al participante en la nueva habilidad de programar acompañado por asistentes de inteligencia artificial. El estudiante aprende a escribir instrucciones claras para generar código en Python, a leer y comprender lo que la IA produce, y a detectar, validar y corregir errores. Cierra construyendo un pequeño programa funcional, versionado con Git y publicado en GitHub.",
       "duracion": "60 horas",
@@ -210,8 +236,10 @@
     },
     {
       "id": "fundamentos-analisis-datos",
+      "capa": 1,
       "categoria": "datos",
       "orden": 1,
+      "nivel": null,
       "nombre": "Fundamentos del análisis de datos",
       "descripcion": "Introducción al análisis de datos para la toma de decisiones cotidianas. Uso de hojas de cálculo (Google Sheets) como herramienta principal para organizar, limpiar y analizar información, construcción de visualizaciones claras con Google Sheets y Looker Studio (versión gratuita), y desarrollo de pensamiento crítico frente a los datos. El enfoque esperado es transformar datos dispersos del día a día en información útil, aplicable a cualquier área del conocimiento, a través de un ciclo simple de preguntar, limpiar, analizar y comunicar con datos.",
       "duracion": "60 horas",
@@ -270,8 +298,10 @@
     },
     {
       "id": "consultas-analisis-exploratorio-sql-python",
+      "capa": 1,
       "categoria": "datos",
       "orden": 2,
+      "nivel": null,
       "nombre": "Consultas y análisis exploratorio con SQL y Python",
       "descripcion": "Introducción al análisis de datos consultando la información en su fuente. Comprensión del modelo relacional y escritura de consultas SQL con filtros, agrupaciones y agregaciones en BigQuery, complementada con los primeros pasos del análisis exploratorio en Python y pandas desde Google Colab, sin instalaciones locales. El enfoque esperado es que el estudiante extraiga y explore datos de manera reproducible, manteniendo la lectura crítica de los resultados y la comunicación de hallazgos como ejes transversales del curso.",
       "duracion": "60 horas",
@@ -350,8 +380,10 @@
     },
     {
       "id": "visualizacion-comunicacion-datos-cero",
+      "capa": 1,
       "categoria": "datos",
       "orden": 3,
+      "nivel": null,
       "nombre": "Visualización y comunicación de datos desde cero",
       "descripcion": "Curso introductorio que enseña a leer, interpretar y comunicar datos a través de gráficos, sin requerir experiencia previa. El participante aprende a distinguir tipos de datos, a construir visualizaciones claras en Excel, Power BI y Tableau, y a contar una historia sencilla con la información. Cierra creando un tablero básico que responde una pregunta de su entorno cotidiano.",
       "duracion": "60 horas",
@@ -410,8 +442,10 @@
     },
     {
       "id": "fundamentos-computacion-nube",
+      "capa": 1,
       "categoria": "nube",
       "orden": 1,
+      "nivel": null,
       "nombre": "Fundamentos de la computación en la nube",
       "descripcion": "Introducción a la arquitectura y computación en la nube, con foco en fundamentos de virtualización, servicios esenciales de los tres grandes proveedores (AWS, Azure y GCP), el modelo de responsabilidad compartida y la economía de la nube, incluyendo criterios de sostenibilidad. El enfoque esperado es que el estudiante comprenda cómo funciona la infraestructura en la nube y los conceptos clave detrás del despliegue continuo y la escalabilidad, sentando una base conceptual aplicable a cualquier área del conocimiento, dentro de las capas gratuitas de los proveedores.",
       "duracion": "60 horas",
@@ -493,8 +527,10 @@
     },
     {
       "id": "arquitecturas-servicios-nube",
+      "capa": 1,
       "categoria": "nube",
       "orden": 2,
+      "nivel": null,
       "nombre": "Arquitecturas y servicios en la nube",
       "descripcion": "Introducción a la arquitectura de soluciones en la nube, partiendo de los fundamentos de virtualización y de los modelos IaaS, PaaS y SaaS, y avanzando hacia el Well-Architected Framework, la diferencia entre arquitecturas monolíticas y de microservicios, la alta disponibilidad, el auto scaling y la resiliencia. El enfoque esperado es que el estudiante documente arquitecturas simples, reconozca servicios gestionados y serverless desde una perspectiva de negocio y sustente sus decisiones de diseño en criterios de costo, disponibilidad y seguridad, trabajando dentro de las capas gratuitas de AWS, Azure y GCP.",
       "duracion": "60 horas",
@@ -576,8 +612,10 @@
     },
     {
       "id": "nube-trabajo-productividad-seguridad-sostenibilidad",
+      "capa": 1,
       "categoria": "nube",
       "orden": 3,
+      "nivel": null,
       "nombre": "La nube en el trabajo: productividad, seguridad y sostenibilidad",
       "descripcion": "Curso introductorio que muestra cómo la computación en la nube transforma el trabajo diario, sin requerir experiencia técnica previa. El participante aprende a usar servicios cloud de colaboración y almacenamiento, a aplicar buenas prácticas de seguridad personal en la nube y a comprender el impacto ambiental y económico de estos servicios. Cierra proponiendo una solución cloud sencilla para una necesidad real.",
       "duracion": "60 horas",
@@ -637,8 +675,10 @@
     },
     {
       "id": "ciberseguridad-financiera-proteccion-contra-fraude-digital",
+      "capa": 1,
       "categoria": "ciberseguridad",
       "orden": 1,
+      "nivel": null,
       "nombre": "Ciberseguridad financiera: protección contra el fraude digital",
       "descripcion": "Formación orientada a proteger las finanzas personales y del pequeño negocio frente al fraude digital, que cubre el uso seguro de banca móvil, billeteras digitales y plataformas de pago, el reconocimiento de las principales estafas financieras (phishing bancario, fraude por código QR, esquemas de inversión fraudulentos) y la protección de la identidad frente al robo con fines de fraude financiero. Cierra con la construcción de un protocolo personal de verificación antes de autorizar cualquier transacción o solicitud de dinero.",
       "duracion": "60 horas",
@@ -705,8 +745,10 @@
     },
     {
       "id": "ciberseguridad-defensa-digital",
+      "capa": 1,
       "categoria": "ciberseguridad",
       "orden": 2,
+      "nivel": null,
       "nombre": "Ciberseguridad y defensa digital",
       "descripcion": "El curso desarrolla una base de “seguridad por diseño” en la que el estudiante se reconoce como primer anillo de defensa frente a amenazas de ingeniería social potenciadas por inteligencia artificial (deepfakes, clonación de voz, fraude por suplantación). Integra gestión de identidad digital, criptografía aplicada a nivel de usuario y protocolos de seguridad personal en entornos corporativos, con foco permanente en la validación práctica de lo aprendido y no en la memorización de teoría.",
       "duracion": "60 horas",
@@ -775,8 +817,10 @@
     },
     {
       "id": "fundamentos-ciberseguridad-analisis-amenazas",
+      "capa": 1,
       "categoria": "ciberseguridad",
       "orden": 3,
+      "nivel": null,
       "nombre": "Fundamentos de Ciberseguridad y análisis de amenazas",
       "descripcion": "Esta formación construye una base integral de ciberseguridad para el usuario digital, desde los conceptos fundamentales (modelo CIA, tipos de amenazas, gestión de contraseñas) hasta la protección práctica de dispositivos, redes y datos personales, incluyendo el marco legal colombiano de protección de datos (Ley 1581 de Habeas Data). Cierra con una introducción guiada al análisis de amenazas y vulnerabilidades bajo marcos de referencia de la industria (MITRE ATT&CK, OWASP Top 10, CVE/CVSS), usando herramientas de reconocimiento ético en entorno sandbox, para que el estudiante entienda cómo piensa un atacante y cómo se prioriza el riesgo en una organización.",
       "duracion": "60 horas",
@@ -843,8 +887,10 @@
     },
     {
       "id": "fundamentos-ia-generativa",
+      "capa": 1,
       "categoria": "ia",
       "orden": 1,
+      "nivel": null,
       "nombre": "Fundamentos de la IA generativa",
       "descripcion": "Al finalizar este programa, el participante usará modelos de IA generativa de forma crítica y ética en tareas cotidianas y laborales, reconocerá sus límites (sesgos, alucinaciones) y automatizará tareas simples mediante agentes y flujos sin código, sin necesidad de conocimientos previos de programación ni de inglés técnico.",
       "duracion": "60 horas",
@@ -897,8 +943,10 @@
     },
     {
       "id": "ia-generativa-aplicada-productividad",
+      "capa": 1,
       "categoria": "ia",
       "orden": 2,
+      "nivel": null,
       "nombre": "IA generativa aplicada a la productividad",
       "descripcion": "Curso orientado a la aplicación de la IA generativa en tareas cotidianas y laborales. Uso de modelos fundacionales de lenguaje para generar y adaptar contenido en texto, imagen, audio y datos, construcción y refinamiento de prompts efectivos, y configuración de agentes simples en plataformas no-code conectados a fuentes documentales propias. El enfoque esperado es el uso crítico y ético de estas herramientas —autoría, propiedad intelectual y datos personales—, con detección de sesgos y alucinaciones y verificación de la información antes de utilizarla, sin conocimientos previos de programación ni de inglés técnico.",
       "duracion": "60 horas",
@@ -960,8 +1008,10 @@
     },
     {
       "id": "pensamiento-critico-seguridad-frente-ia",
+      "capa": 1,
       "categoria": "ia",
       "orden": 3,
+      "nivel": null,
       "nombre": "Pensamiento crítico y seguridad frente a la IA",
       "descripcion": "Curso introductorio que prepara al participante para convivir de forma crítica y segura con la inteligencia artificial generativa, sin requerir experiencia previa. Aprende a distinguir contenido real de contenido sintético, a reconocer deepfakes y desinformación, a proteger sus datos personales y a usar la IA con criterio ético. Cierra evaluando casos reales y proponiendo pautas de uso responsable.",
       "duracion": "60 horas",
@@ -1029,8 +1079,10 @@
     },
     {
       "id": "growth-datos-e-ia-aplicada",
+      "capa": 1,
       "categoria": "marketing",
       "orden": 1,
+      "nivel": null,
       "nombre": "Growth, Datos e IA aplicada",
       "descripcion": "Curso introductorio 100% virtual que forma a los participantes en marketing digital como disciplina basada en datos, integrando growth hacking, automatización de embudos de conversión, un ecosistema de adquisición digital (SEO/SEM) potenciado por IA, y personalización de contenido a escala. Su propósito es despertar vocaciones hacia el marketing digital y dar las bases prácticas necesarias para orientar el marketing hacia la generación de ingresos, sin exigir conocimiento previo en el tema.",
       "duracion": "60 horas",
@@ -1112,8 +1164,10 @@
     },
     {
       "id": "growth-contenido-potenciado-ia",
+      "capa": 1,
       "categoria": "marketing",
       "orden": 2,
+      "nivel": null,
       "nombre": "Growth y contenido potenciado con IA",
       "descripcion": "Curso introductorio de Marketing Digital que, además de growth hacking, automatización de embudos, SEO/SEM potenciado por IA, analítica y personalización de contenido a escala, incorpora un módulo de estrategia de contenido y redes sociales. Su propósito es dar una formación más completa que combine la lógica de datos e ingresos con la capacidad de comunicar y construir marca en canales sociales, ampliando el perfil de salida hacia roles que requieren tanto pensamiento analítico como criterio de contenido.",
       "duracion": "60 horas",
@@ -1205,8 +1259,10 @@
     },
     {
       "id": "e-commerce-ventas-digitales-ia",
+      "capa": 1,
       "categoria": "marketing",
       "orden": 3,
+      "nivel": null,
       "nombre": "E-commerce y ventas digitales con IA",
       "descripcion": "Curso introductorio 100% virtual dirigido a quienes quieren vender productos o servicios en línea, ya sea como emprendedores o como futuros profesionales de comercio electrónico. Cubre desde la puesta en marcha de un canal de venta digital hasta la optimización de conversión y fidelización con apoyo de IA, bajo el mismo enfoque de la línea: transformar la venta digital en una disciplina de datos y generación de ingresos.",
       "duracion": "60 horas",
@@ -1272,6 +1328,1259 @@
             "Métricas clave: tasa de conversión, ticket promedio, tasa de recompra",
             "Programas de fidelización",
             "Lectura de un dashboard simple de ventas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "programacion-basico",
+      "capa": 2,
+      "categoria": "programacion",
+      "orden": 1,
+      "nivel": "basico",
+      "nombre": "Programación - Básico",
+      "descripcion": "Curso de desarrollo web frontend en el que el participante construye páginas con HTML5 y CSS3, les da interactividad con JavaScript moderno y aprende a depurar en el navegador y a versionar con Git. Cierra con un proyecto de portafolio publicado que evidencia sus competencias para roles de entrada ante procesos de selección.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Navegador Chrome/Firefox (DevTools)",
+        "W3C Validator",
+        "Git + GitHub",
+        "GitHub Pages",
+        "Asistente de IA para debugging"
+      ],
+      "perfil_entrada": "Persona con certificado de Capa 1 o conocimientos equivalentes, con un primer acercamiento a las herramientas digitales. No requiere experiencia previa en programación, pero sí manejo básico del computador y disposición para el trabajo práctico.",
+      "perfil_salida": "Desarrollador frontend junior capaz de construir páginas web sencillas y funcionales con maquetación responsiva y lógica básica en JavaScript, trabajando en equipo con Git y GitHub en roles de entrada con supervisión.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Fundamentos de HTML5 y CSS3",
+          "contenidos": [
+            "Estructura semántica de una página: etiquetas de contenido, encabezados, formularios",
+            "Modelo de cajas: margin, border, padding, box-sizing",
+            "Flexbox y CSS Grid para maquetación de layouts",
+            "Diseño responsivo: media queries y unidades relativas (%, rem, vw)",
+            "Buenas prácticas de organización de hojas de estilo"
+          ]
+        },
+        {
+          "titulo": "M2 - JavaScript moderno (ES6+)",
+          "contenidos": [
+            "Variables con let y const, funciones flecha, desestructuración",
+            "Plantillas literales y manipulación de arrays/objetos",
+            "Manipulación del DOM: seleccionar, crear y modificar elementos",
+            "Eventos: click, submit, input y delegación de eventos",
+            "Validación de formularios en el cliente"
+          ]
+        },
+        {
+          "titulo": "M3 - Depuración y validación en el navegador",
+          "contenidos": [
+            "Herramientas de desarrollador de Chrome/Firefox: consola, elementos, red",
+            "Breakpoints en JavaScript e inspección de variables",
+            "Lectura de errores de sintaxis y de renderizado",
+            "Validación de HTML/CSS con W3C Validator",
+            "Corrección de errores comunes con IA como asistente de debugging"
+          ]
+        },
+        {
+          "titulo": "M4 - Control de versiones con Git",
+          "contenidos": [
+            "Inicializar un repositorio, staging y commits",
+            "Ramas: crear, cambiar y fusionar (merge)",
+            "Colaboración en GitHub: fork, pull request, resolución de conflictos",
+            "Buenas prácticas de mensajes de commit",
+            ".gitignore y manejo de archivos sensibles"
+          ]
+        },
+        {
+          "titulo": "M5 - Proyecto de portafolio",
+          "contenidos": [
+            "Construcción de una página web funcional de principio a fin",
+            "Estructura de carpetas de un proyecto frontend estándar",
+            "README profesional: descripción, instalación, uso, capturas",
+            "Publicación en GitHub Pages",
+            "Preparación del proyecto para mostrar en procesos de selección"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "programacion-intermedio",
+      "capa": 2,
+      "categoria": "programacion",
+      "orden": 2,
+      "nivel": "intermedio",
+      "nombre": "Programación - Intermedio",
+      "descripcion": "Curso que lleva al participante del frontend al desarrollo backend, consolidando la programación orientada a objetos, las buenas prácticas de testing y la construcción de APIs REST con FastAPI. El estudiante aprende a persistir datos en bases NoSQL con MongoDB y a estructurar aplicaciones bajo principios de arquitectura limpia, integrando servicios externos en soluciones modulares.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Python",
+        "pytest",
+        "GitHub Actions",
+        "flake8/ruff",
+        "MongoDB + PyMongo",
+        "FastAPI + Swagger",
+        "Railway o Render (free tier)",
+        "python-dotenv"
+      ],
+      "perfil_entrada": "Persona con autonomía técnica básica, que aprobó el nivel básico de la línea o cuenta con experiencia equivalente. Maneja fundamentos de programación y control de versiones, y está lista para asumir proyectos de mayor complejidad.",
+      "perfil_salida": "Desarrollador backend o full stack junior capaz de estructurar la lógica de servidor de aplicaciones web, gestionar bases de datos e integrar múltiples APIs en arquitecturas modulares, ejecutando proyectos de complejidad moderada sin supervisión constante.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Programación orientada a objetos aplicada",
+          "contenidos": [
+            "Clases: atributos de instancia/clase, __init__, __repr__, __str__",
+            "Herencia y super(): extender comportamiento sin duplicar código",
+            "Encapsulamiento: atributos privados, properties (@property, setter)",
+            "Polimorfismo práctico: método override en subclases con casos reales",
+            "Cuándo usar POO vs funciones: criterios técnicos con trade-offs"
+          ]
+        },
+        {
+          "titulo": "M2 - Testing avanzado y calidad de software",
+          "contenidos": [
+            "Fixtures en pytest: setup/teardown y reutilización entre tests",
+            "Mocking con unittest.mock: aislar dependencias externas (APIs, BD) en tests",
+            "Pruebas de integración vs unitarias: cuándo aplicar cada tipo",
+            "GitHub Actions: pipeline de CI básico que ejecuta tests en cada push",
+            "Métricas de calidad: complejidad ciclomática, cobertura y linting con flake8/ruff"
+          ]
+        },
+        {
+          "titulo": "M3 - Bases de datos NoSQL con MongoDB",
+          "contenidos": [
+            "Modelo de documentos y colecciones frente al modelo relacional",
+            "Operaciones CRUD con PyMongo",
+            "Diseño de esquemas flexibles y embebido vs referencia entre documentos",
+            "Índices para mejorar el rendimiento de consultas",
+            "Introducción a un ODM (Motor o MongoEngine) desde Python"
+          ]
+        },
+        {
+          "titulo": "M4 - Desarrollo de APIs REST con FastAPI",
+          "contenidos": [
+            "Arquitectura REST: recursos, verbos HTTP, status codes y contratos de API",
+            "FastAPI: rutas, modelos Pydantic, validación automática de datos y docs con Swagger",
+            "CRUD completo sobre una entidad: GET, POST, PUT/PATCH, DELETE",
+            "Autenticación JWT básica: generación, validación y protección de endpoints",
+            "Desplegar la API en Railway o Render (free tier) y consumirla desde un cliente"
+          ]
+        },
+        {
+          "titulo": "M5 - Arquitectura de software y buenas prácticas",
+          "contenidos": [
+            "Separación de responsabilidades: capas de presentación, lógica y datos",
+            "Patrones de diseño prácticos: Factory, Strategy y Singleton con ejemplos Python",
+            "Variables de entorno y gestión de configuración con python-dotenv",
+            "Logging estructurado: niveles, formatos y cuándo loggear vs imprimir",
+            "Code review efectivo: qué buscar, cómo dar y recibir feedback técnico"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "programacion-avanzado",
+      "capa": 2,
+      "categoria": "programacion",
+      "orden": 3,
+      "nivel": "avanzado",
+      "nombre": "Programación - Avanzado",
+      "descripcion": "Curso de diseño y liderazgo de sistemas de software complejos, que aborda principios SOLID, arquitectura hexagonal, sistemas orientados a eventos, concurrencia y despliegue profesional con Docker y CI/CD. Incluye la integración profunda de inteligencia artificial en aplicaciones Python y el desarrollo de competencias de liderazgo técnico y comunicación de decisiones de arquitectura ante audiencias mixtas.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Python + FastAPI",
+        "Redis",
+        "RabbitMQ",
+        "cProfile y py-spy",
+        "Docker + Docker Compose",
+        "GitHub Actions",
+        "Prometheus + Grafana",
+        "Anthropic/OpenAI SDK",
+        "LangChain/LlamaIndex"
+      ],
+      "perfil_entrada": "Persona con autonomía técnica alta, que aprobó el nivel intermedio o cuenta con experiencia laboral verificable en desarrollo backend o full stack. Domina APIs, bases de datos y buenas prácticas de arquitectura de software.",
+      "perfil_salida": "Desarrollador full stack senior capaz de integrar componentes avanzados en productos digitales, configurar flujos CI/CD, diseñar arquitecturas modulares e incorporar IA para optimizar el rendimiento. Ejerce liderazgo técnico y comunica decisiones de diseño a audiencias mixtas.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Arquitectura de sistemas y diseño avanzado",
+          "contenidos": [
+            "Principios SOLID aplicados a Python: ejemplos concretos por cada principio",
+            "Arquitectura hexagonal (ports & adapters): separar dominio de infraestructura",
+            "Event-driven básico: colas de mensajes con Redis Pub/Sub o RabbitMQ intro",
+            "Documentación de arquitectura con ADRs (Architecture Decision Records)",
+            "Evaluación de trade-offs técnicos: monolito vs microservicios vs serverless para Python"
+          ]
+        },
+        {
+          "titulo": "M2 - Concurrencia, asincronismo y performance",
+          "contenidos": [
+            "asyncio y async/await: modelo de concurrencia cooperativa en Python",
+            "FastAPI asíncrono: endpoints async, background tasks y WebSockets intro",
+            "Threading vs multiprocessing vs asyncio: cuándo usar cada modelo",
+            "Perfilado con cProfile y py-spy: identificar cuellos de botella reales",
+            "Caching con Redis: patrones cache-aside y TTL para optimizar lecturas frecuentes"
+          ]
+        },
+        {
+          "titulo": "M3 - DevOps y despliegue profesional",
+          "contenidos": [
+            "Containerización con Docker: Dockerfile, imagen, contenedor, volúmenes y redes",
+            "Docker Compose: orquestar múltiples servicios (API + BD + cache) en local",
+            "CI/CD completo con GitHub Actions: build, test, lint y deploy automatizado",
+            "Variables de entorno y secretos en producción: Secrets Manager y best practices",
+            "Monitoreo y observabilidad: métricas con Prometheus + Grafana intro"
+          ]
+        },
+        {
+          "titulo": "M4 - Integración de IA en aplicaciones Python",
+          "contenidos": [
+            "Anthropic/OpenAI SDK: integrar LLMs en una aplicación Python con llamadas estructuradas",
+            "Patrón RAG (Retrieval-Augmented Generation): embeddings, vector store y búsqueda semántica",
+            "LangChain/LlamaIndex básico: cadenas, agentes y herramientas (tools) para flujos de IA",
+            "Evaluación de outputs de LLMs: métricas de calidad, detección de alucinaciones en producción",
+            "Consideraciones de costo, latencia y seguridad al desplegar IA en una API pública"
+          ]
+        },
+        {
+          "titulo": "M5 - Liderazgo técnico y soluciones de portafolio",
+          "contenidos": [
+            "Definir y comunicar la arquitectura de un sistema: diagramas C4 (Context, Container, Component)",
+            "Technical roadmap: priorizar deuda técnica, features y refactors en un backlog",
+            "Seguridad en aplicaciones: OWASP Top 10 avanzado — inyección SQL, XSS, CSRF en código propio",
+            "Presentación técnica de alto impacto: demostrar decisiones de diseño a audiencias mixtas",
+            "Contribución a open source: proceso de PR, código de conducta y construcción de reputación"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "analisis-datos-basico",
+      "capa": 2,
+      "categoria": "datos",
+      "orden": 1,
+      "nivel": "basico",
+      "nombre": "Análisis de datos - Básico",
+      "descripcion": "Curso que habilita al participante para consultar, limpiar y visualizar datos con propósito de negocio. El estudiante aprende SQL para extracción y agregación, transforma datos con pandas, construye visualizaciones descriptivas en Power BI o Tableau y comunica hallazgos estadísticos básicos en lenguaje de negocio, culminando con un dashboard funcional listo para su portafolio.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "BigQuery (datasets públicos)",
+        "Python + pandas",
+        "Power BI o Tableau",
+        "Looker Studio",
+        "Git + GitHub"
+      ],
+      "perfil_entrada": "Persona con certificado de Capa 1 o conocimientos equivalentes, con un primer acercamiento a herramientas digitales y hojas de cálculo. No requiere experiencia previa, pero sí pensamiento lógico y disposición para trabajar con información numérica.",
+      "perfil_salida": "Analista de datos junior capaz de ordenar y limpiar conjuntos de datos sencillos, realizar consultas y filtros básicos en SQL, y crear gráficos e informes claros que apoyen la toma de decisiones en roles de entrada con supervisión.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - SQL para análisis de negocio",
+          "contenidos": [
+            "JOINs: INNER, LEFT, RIGHT y FULL OUTER con casos de uso reales",
+            "Agregaciones y GROUP BY / HAVING para resumir datos de negocio",
+            "Subconsultas simples para estructurar lógica de negocio",
+            "Buenas prácticas: evitar SELECT *, filtros eficientes, nombrar columnas claramente",
+            "Herramienta: BigQuery con datasets públicos de negocio"
+          ]
+        },
+        {
+          "titulo": "M2 - Transformaciones avanzadas con pandas",
+          "contenidos": [
+            "Reshaping: pivot_table(), melt(), stack()/unstack()",
+            "Expresiones regulares con pandas para limpieza de texto (str.extract, str.replace)",
+            "Method chaining y pipe() para pipelines legibles",
+            "Manejo robusto de fechas: parsing, timezone, cálculo de diferencias",
+            "Exportación a múltiples formatos: CSV, Excel, JSON, Parquet"
+          ]
+        },
+        {
+          "titulo": "M3 - Visualización avanzada: Power BI y Tableau",
+          "contenidos": [
+            "Conexión de fuentes de datos y modelado básico en Power BI o Tableau",
+            "Creación de gráficos descriptivos: barras, líneas, pastel, tablas dinámicas",
+            "Diseño de dashboards para audiencias ejecutivas vs. técnicas",
+            "Filtros interactivos y segmentadores (slicers)",
+            "Publicación y compartición de reportes con acceso controlado"
+          ]
+        },
+        {
+          "titulo": "M4 - Estadística descriptiva aplicada a negocio",
+          "contenidos": [
+            "Medidas de tendencia central y dispersión aplicadas a KPIs reales",
+            "Percentiles y cuartiles para segmentar datos de negocio",
+            "Distribuciones de probabilidad frecuentes en datos de negocio",
+            "Introducción a la correlación: qué significa y errores comunes de interpretación",
+            "Comunicación de resultados estadísticos en lenguaje de negocio"
+          ]
+        },
+        {
+          "titulo": "M5 - Documentación y portafolio analítico",
+          "contenidos": [
+            "Estructura de repositorio analítico en GitHub: README, carpetas, licencia",
+            "Notebooks documentados: celdas de texto, markdown, convenciones de naming",
+            "Versionado básico con Git: commits, branches, pull requests",
+            "Publicación de dashboard funcional en Looker Studio con mínimo 4 KPIs",
+            "Narrativa de hallazgos orientada a decisiones de negocio"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "analisis-datos-intermedio",
+      "capa": 2,
+      "categoria": "datos",
+      "orden": 2,
+      "nivel": "intermedio",
+      "nombre": "Análisis de datos - Intermedio",
+      "descripcion": "Curso que forma al participante como especialista en Business Intelligence, con foco en la ingeniería y el modelado de datos. El estudiante aprende a extraer datos desde APIs, a construir pipelines de transformación con dbt, a diseñar modelos dimensionales Star y Snowflake, a aplicar estadística inferencial al negocio y a asegurar la calidad y gobernanza de los datos.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Python + pandas",
+        "BigQuery (google-cloud-bigquery SDK)",
+        "GitHub Actions o Cloud Scheduler",
+        "dbt Core + Cloud Shell",
+        "scipy.stats",
+        "Great Expectations"
+      ],
+      "perfil_entrada": "Persona con autonomía técnica básica, que aprobó el nivel básico o cuenta con experiencia previa en análisis de datos. Maneja SQL fundamental, transformación de datos y visualización descriptiva, y está lista para proyectos de modelado y automatización.",
+      "perfil_salida": "Especialista en Business Intelligence capaz de diseñar modelos de datos relacionales y flujos de información automatizados (ETL), asegurando la consolidación y disponibilidad de variables clave para reportes de negocio inteligentes, en proyectos de complejidad moderada sin supervisión constante.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Ingeniería de datos: APIs y automatización",
+          "contenidos": [
+            "Consumo de APIs REST con autenticación: OAuth 2.0, API keys, headers",
+            "Paginación, rate limiting y manejo de errores en extracción de datos",
+            "Procesamiento de JSON anidado con json_normalize y pandas",
+            "Automatización de pipelines con GitHub Actions o Cloud Scheduler",
+            "Almacenamiento en BigQuery vía Python: google-cloud-bigquery SDK"
+          ]
+        },
+        {
+          "titulo": "M2 - dbt para transformación de datos analíticos",
+          "contenidos": [
+            "Arquitectura moderna: fuente → staging → marts con dbt Core",
+            "Modelos dbt: materialización como view, table e incremental",
+            "Tests integrados: not_null, unique, accepted_values, relationships",
+            "Documentación automática y data lineage en dbt docs",
+            "Integración dbt Core + BigQuery en entorno gratuito (Cloud Shell)"
+          ]
+        },
+        {
+          "titulo": "M3 - SQL avanzado y modelado dimensional",
+          "contenidos": [
+            "Subconsultas y CTEs (WITH) para estructurar lógica compleja",
+            "Window functions: ROW_NUMBER, RANK, LAG, LEAD, PARTITION BY",
+            "Modelado dimensional: esquemas Star y Snowflake, tablas de hechos y dimensiones",
+            "Optimización: índices, planes de ejecución y particionamiento básico",
+            "Herramienta: BigQuery con datasets públicos de negocio"
+          ]
+        },
+        {
+          "titulo": "M4 - Estadística aplicada al análisis de negocio",
+          "contenidos": [
+            "Pruebas de hipótesis básicas: t-test, chi-cuadrado con scipy.stats",
+            "Correlación de Pearson y Spearman: interpretación y errores comunes",
+            "Intervalos de confianza aplicados a métricas de negocio",
+            "Diseño de reportes estadísticos para la toma de decisiones",
+            "Comunicación de resultados estadísticos a audiencias no técnicas"
+          ]
+        },
+        {
+          "titulo": "M5 - Calidad y gobernanza de datos",
+          "contenidos": [
+            "Dimensiones de calidad: completeness, accuracy, consistency, timeliness",
+            "Validación automatizada con Great Expectations: suites y reportes",
+            "Diccionario de datos y documentación de esquemas en dbt",
+            "Control de acceso en BigQuery: roles IAM y column-level security",
+            "Normativa aplicada: Ley 1581, GDPR y transferencia internacional de datos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "analisis-datos-avanzado",
+      "capa": 2,
+      "categoria": "datos",
+      "orden": 3,
+      "nivel": "avanzado",
+      "nombre": "Análisis de datos - Avanzado",
+      "descripcion": "Curso que forma al participante como científico o ingeniero de datos, abordando arquitectura de datos en la nube con procesamiento a gran escala en Spark, Machine Learning avanzado y MLOps, análisis de series de tiempo, y analítica de segmentación y experimentación. Culmina con una solución de impacto organizacional implementada de extremo a extremo y defendida técnicamente.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Google Cloud (BigQuery, Cloud Storage, Dataflow, Pub/Sub)",
+        "Apache Spark (PySpark)",
+        "scikit-learn + XGBoost + SHAP",
+        "MLflow o Weights & Biases",
+        "FastAPI + Docker",
+        "Prophet",
+        "Looker Studio"
+      ],
+      "perfil_entrada": "Persona con autonomía técnica alta, que aprobó el nivel intermedio o cuenta con experiencia laboral verificable en análisis o ingeniería de datos. Domina el modelado de datos, la construcción de pipelines y la estadística aplicada al negocio.",
+      "perfil_salida": "Científico o ingeniero de datos capaz de construir pipelines de procesamiento a gran escala con Spark, optimizar modelos de Machine Learning avanzados y configurar flujos de MLOps para automatizar el despliegue y monitoreo de soluciones predictivas, con liderazgo analítico.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Arquitectura de datos moderna en la nube",
+          "contenidos": [
+            "Stack lakehouse: diferencias entre data warehouse, data lake y lakehouse",
+            "Google Cloud: BigQuery, Cloud Storage, Dataflow y Pub/Sub — casos de uso",
+            "Procesamiento distribuido a gran escala con Apache Spark (PySpark)",
+            "Particionamiento y clustering en BigQuery para optimización de costos",
+            "Ingestión en tiempo real vs. batch: cuándo usar cada enfoque",
+            "Estimación de costos y estrategias de control de gasto en GCP"
+          ]
+        },
+        {
+          "titulo": "M2 - Machine Learning avanzado y MLOps",
+          "contenidos": [
+            "Feature engineering y modelos de clasificación: Random Forest y XGBoost con scikit-learn",
+            "Evaluación avanzada: matriz de confusión, ROC-AUC, cross-validation y SHAP values",
+            "Ciclo de vida ML: entrenamiento, validación, despliegue y monitoreo",
+            "Versionado de experimentos con MLflow o Weights & Biases; serving con FastAPI + Docker",
+            "Monitoreo de drift y reproducibilidad: seeds, requirements.txt, pipelines de sklearn"
+          ]
+        },
+        {
+          "titulo": "M3 - Análisis de series de tiempo",
+          "contenidos": [
+            "Componentes: tendencia, estacionalidad y ruido — descomposición clásica",
+            "Modelado con Prophet: seasonality y holidays colombianos",
+            "Detección de anomalías con Isolation Forest y métodos estadísticos",
+            "Forecasting con intervalos de confianza y comunicación de incertidumbre",
+            "Caso de uso: proyección de ventas, demanda o tráfico web"
+          ]
+        },
+        {
+          "titulo": "M4 - Analítica avanzada: segmentación y experimentación",
+          "contenidos": [
+            "Clustering avanzado: K-means con elbow method, DBSCAN, silhouette score",
+            "Diseño estadístico de experimentos A/B: tamaño de muestra y aleatorización",
+            "Análisis de cohortes multidimensional: retención, LTV y churn por segmento",
+            "Causalidad: diferencias en diferencias y variables instrumentales básicas",
+            "Presentación de resultados experimentales a tomadores de decisión"
+          ]
+        },
+        {
+          "titulo": "M5 - Liderazgo analítico y solución de impacto organizacional",
+          "contenidos": [
+            "Traducción de problemas de negocio a preguntas analíticas accionables",
+            "Priorización de proyectos analíticos y elaboración de memos ejecutivos",
+            "Stakeholder management y ética: sesgo, equidad algorítmica y auditoría",
+            "Definición de un problema organizacional con arquitectura técnica documentada (fuentes, transformaciones, modelo, visualización)",
+            "Implementación end-to-end en GCP con dashboard ejecutivo en Looker Studio y defensa técnica de decisiones"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arquitectura-nube-basico",
+      "capa": 2,
+      "categoria": "nube",
+      "orden": 1,
+      "nivel": "basico",
+      "nombre": "Arquitectura en la nube - Básico",
+      "descripcion": "Curso que introduce al participante en la operación y el soporte de entornos en la nube, cubriendo fundamentos de virtualización, administración de consolas AWS, Azure y GCP, redes y almacenamiento básico, bases de datos gestionadas y automatización con CLI. El estudiante desarrolla la capacidad de brindar soporte de primer nivel y realizar configuraciones básicas de infraestructura.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Consolas AWS",
+        "Azure",
+        "GCP",
+        "Linux",
+        "Windows Server",
+        "CloudWatch",
+        "Cloud Monitoring",
+        "AWS CLI y gcloud CLI",
+        "Bash"
+      ],
+      "perfil_entrada": "Persona con certificado de Capa 1 o conocimientos equivalentes, con un primer acercamiento a herramientas digitales y nociones básicas de sistemas operativos. No requiere experiencia previa en nube, pero sí familiaridad con el computador y la línea de comandos.",
+      "perfil_salida": "Técnico de soporte cloud (L1) capaz de brindar soporte básico de primer nivel y realizar configuraciones básicas de almacenamiento, servidores y redes en la nube, diagnosticando fallas comunes y operando las consolas de los principales proveedores bajo supervisión.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Fundamentos de virtualización y consolas cloud",
+          "contenidos": [
+            "Instancias virtuales (EC2/Compute Engine): tipos, elección de recursos y ciclo de vida",
+            "Consola de AWS/Azure/GCP: creación de recursos, regiones, zonas de disponibilidad y tags",
+            "IAM básico: usuarios, roles, grupos y políticas de acceso",
+            "Fundamentos de Linux/Windows Server: comandos esenciales, gestión de usuarios y servicios",
+            "Monitoreo básico de recursos con CloudWatch / Cloud Monitoring"
+          ]
+        },
+        {
+          "titulo": "M2 - Redes y almacenamiento básico en la nube",
+          "contenidos": [
+            "Fundamentos de redes: VPC/VNet, subredes y tablas de rutas",
+            "Security groups y firewalls: reglas de entrada/salida básicas",
+            "Almacenamiento de objetos: S3/Cloud Storage — buckets, permisos y clases de almacenamiento",
+            "Balanceo de carga básico y DNS con Route 53/Cloud DNS",
+            "Backups y snapshots básicos de recursos cloud"
+          ]
+        },
+        {
+          "titulo": "M3 - Bases de datos gestionadas y CDN",
+          "contenidos": [
+            "RDS (AWS) / Cloud SQL (GCP): crear, conectar y gestionar instancias relacionales",
+            "DynamoDB / Firestore: cuándo elegir NoSQL y modelado básico de datos",
+            "Backups automáticos, snapshots y políticas de retención",
+            "CDN con CloudFront o Cloud CDN: acelerar la entrega de contenido estático"
+          ]
+        },
+        {
+          "titulo": "M4 - Soporte técnico y automatización básica",
+          "contenidos": [
+            "AWS CLI y gcloud CLI: instalación, configuración de perfiles y comandos esenciales",
+            "Troubleshooting L1/L2: diagnóstico de fallas comunes de red, almacenamiento y disponibilidad",
+            "Scripts Bash para automatizar tareas repetitivas en la nube",
+            "Gestión de credenciales segura: roles IAM en lugar de claves de acceso en scripts"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arquitectura-nube-intermedio",
+      "capa": 2,
+      "categoria": "nube",
+      "orden": 2,
+      "nivel": "intermedio",
+      "nombre": "Arquitectura en la nube - Intermedio",
+      "descripcion": "Curso que forma al participante en la administración de infraestructura cloud, con foco en contenerización con Docker y Kubernetes, pipelines de CI/CD, despliegue de aplicaciones, redes avanzadas, infraestructura como código con Terraform y observabilidad. El estudiante aprende a automatizar el despliegue de aplicaciones y a gestionar entornos de forma eficiente y reproducible.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "GitHub Actions",
+        "AWS CodePipeline/CodeBuild o Cloud Build",
+        "Docker + Docker Compose",
+        "Kubernetes (kubectl)",
+        "Elastic Beanstalk",
+        "App Engine",
+        "Terraform + Terragrunt",
+        "OpenTelemetry",
+        "AWS X-Ray",
+        "Cloud Trace",
+        "Grafana Loki"
+      ],
+      "perfil_entrada": "Persona con autonomía técnica básica, que aprobó el nivel básico o cuenta con experiencia previa en soporte o administración cloud. Maneja fundamentos de consola, redes y sistemas operativos, y está lista para tareas de automatización e infraestructura.",
+      "perfil_salida": "Administrador cloud capaz de implementar plantillas de Infraestructura como Código (IaC) y configurar la orquestación básica de servicios y contenedores, asegurando el despliegue automático y eficiente de aplicaciones en la nube, en proyectos de complejidad moderada sin supervisión constante.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - CI/CD y DevOps en la nube",
+          "contenidos": [
+            "Pipelines CI/CD con GitHub Actions: jobs, steps, triggers y artefactos",
+            "CodePipeline + CodeBuild (AWS) o Cloud Build (GCP): pipelines nativos del proveedor",
+            "Integración de análisis de código estático (linting, SAST) dentro del pipeline",
+            "Gestión de entornos: dev, staging y prod con variables y aprobaciones manuales",
+            "Estrategia GitOps: sincronizar el estado deseado del clúster desde el repositorio"
+          ]
+        },
+        {
+          "titulo": "M2 - Contenedores con Docker y Kubernetes",
+          "contenidos": [
+            "Ciclo de vida de una imagen Docker: Dockerfile, build, tag, push y pull",
+            "Redes y volúmenes en Docker: bridge, host y bind mounts",
+            "Docker Compose: definir y ejecutar aplicaciones multi-contenedor con YAML",
+            "Fundamentos de Kubernetes: pods, deployments, services y namespaces",
+            "kubectl básico: apply, get, describe, logs y port-forward",
+            "Distribución de contenedores en registros: Docker Hub, Amazon ECR y Artifact Registry"
+          ]
+        },
+        {
+          "titulo": "M3 - Despliegue de aplicaciones en la nube",
+          "contenidos": [
+            "Elastic Beanstalk (AWS) / App Engine (GCP): desplegar una app sin gestionar servidores",
+            "Variables de entorno y gestión de secretos",
+            "Estrategias de despliegue: rolling, blue-green y canary",
+            "Health checks y reintentos automáticos",
+            "Rollback de despliegues: recuperar la versión anterior ante fallo"
+          ]
+        },
+        {
+          "titulo": "M4 - Redes avanzadas y conectividad",
+          "contenidos": [
+            "VPC peering y Transit Gateway (AWS) / Cloud Router (GCP)",
+            "DNS con Route 53 / Cloud DNS: routing basado en latencia y failover",
+            "WAF: reglas gestionadas y personalizadas contra OWASP Top 10",
+            "Private Link / Private Service Connect: acceso privado a servicios",
+            "Network Load Balancer vs. Application Load Balancer"
+          ]
+        },
+        {
+          "titulo": "M5 - Infraestructura como código avanzado con Terraform",
+          "contenidos": [
+            "Módulos Terraform reutilizables: estructura, inputs, outputs y publicación en registry",
+            "Remote state con S3 + DynamoDB o GCS: bloqueo de estado en entornos de equipo",
+            "Workspaces de Terraform: gestionar múltiples entornos (dev/staging/prod) con un solo código",
+            "Terragrunt: DRY (Don't Repeat Yourself) en configuraciones multi-entorno y multi-cuenta",
+            "Drift detection y reconciliación: identificar cambios manuales que rompen la IaC"
+          ]
+        },
+        {
+          "titulo": "M6 - Observabilidad avanzada y alertas",
+          "contenidos": [
+            "OpenTelemetry: estándar de instrumentación para trazas, métricas y logs",
+            "Distributed tracing con AWS X-Ray / Google Cloud Trace: seguir una petición entre microservicios",
+            "Gestión centralizada de logs con OpenSearch / Splunk free / Grafana Loki",
+            "Alertas inteligentes: anomaly detection en CloudWatch y Cloud Monitoring",
+            "Runbooks y playbooks: documentar procedimientos de respuesta a alertas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arquitectura-nube-avanzado",
+      "capa": 2,
+      "categoria": "nube",
+      "orden": 3,
+      "nivel": "avanzado",
+      "nombre": "Arquitectura en la nube - Avanzado",
+      "descripcion": "Curso que forma al participante como arquitecto de soluciones cloud, abordando arquitecturas orientadas a eventos, Kubernetes avanzado con enfoque multinube, platform engineering y DevSecOps, FinOps, resiliencia y SRE, y gobernanza estratégica con landing zones. El estudiante desarrolla la capacidad de diseñar arquitecturas complejas y optimizar costos y fiabilidad a escala organizacional.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "EventBridge",
+        "Eventarc",
+        "Kafka, SQS/SNS, Pub/Sub",
+        "Kubernetes + Helm (EKS",
+        "GKE",
+        "AKS)",
+        "Backstage",
+        "OPA o Sentinel",
+        "Cosign",
+        "HashiCorp Vault",
+        "AWS Cost Explorer",
+        "GCP Billing",
+        "AWS Fault Injection Simulator",
+        "Chaos Monkey"
+      ],
+      "perfil_entrada": "Persona con autonomía técnica alta, que aprobó el nivel intermedio o cuenta con experiencia laboral verificable en administración cloud. Domina la contenerización, la infraestructura como código y el despliegue de aplicaciones en la nube.",
+      "perfil_salida": "Arquitecto de soluciones cloud capaz de estructurar soluciones de arquitectura multinube, diseñar estrategias de despliegue de contenedores con Kubernetes y aplicar marcos de FinOps para auditar la eficiencia operativa y optimizar costos, ejerciendo liderazgo técnico en sistemas complejos.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Arquitecturas event-driven y mensajería",
+          "contenidos": [
+            "EventBridge (AWS) / Eventarc (GCP): enrutamiento de eventos entre servicios y cuentas",
+            "Kafka vs. SQS/SNS vs. Pub/Sub: criterios de elección según volumen y latencia",
+            "Patrones de integración: CQRS, event sourcing y outbox pattern",
+            "Dead-letter queues y estrategias de reintento con backoff exponencial",
+            "Schema registry: garantizar compatibilidad de mensajes entre productores y consumidores"
+          ]
+        },
+        {
+          "titulo": "M2 - Kubernetes avanzado, escalabilidad y multinube",
+          "contenidos": [
+            "Horizontal Pod Autoscaler (HPA) y Vertical Pod Autoscaler (VPA)",
+            "ConfigMaps y Secrets en Kubernetes: externalizar configuración sensible",
+            "Ingress controllers y gestión de tráfico HTTP/HTTPS",
+            "Helm: gestión de paquetes Kubernetes con charts y values",
+            "Namespaces y RBAC: aislamiento de equipos y control de acceso",
+            "EKS (AWS) / GKE (GCP) / AKS (Azure): clústeres gestionados y diseño de arquitecturas multinube"
+          ]
+        },
+        {
+          "titulo": "M3 - Platform Engineering y DevSecOps",
+          "contenidos": [
+            "Internal Developer Platform (IDP): Backstage y valor para el equipo",
+            "Shift-left security: SAST, DAST, SCA y escaneo de imágenes Docker",
+            "Policy as Code con OPA o Sentinel",
+            "Supply chain security: firma de imágenes con Cosign y SBOM",
+            "Gestión de secretos dinámica con HashiCorp Vault"
+          ]
+        },
+        {
+          "titulo": "M4 - Cloud FinOps y gestión estratégica de costos",
+          "contenidos": [
+            "AWS Cost Explorer y GCP Billing Reports",
+            "Commitment-based discounts: Reserved Instances, Savings Plans",
+            "Spot/Preemptible instances a escala",
+            "Chargeback y showback con tagging",
+            "Carbon footprint en la nube"
+          ]
+        },
+        {
+          "titulo": "M5 - Resiliencia, SRE y gestión de incidentes",
+          "contenidos": [
+            "Error budgets y SLO-based alerting: tomar decisiones de release basadas en fiabilidad",
+            "Chaos engineering avanzado: AWS Fault Injection Simulator / Chaos Monkey — diseño de experimentos",
+            "Game days: simulacros de incidentes para evaluar planes de respuesta del equipo",
+            "Multi-region active-active: replicación de datos, consistencia eventual y trade-offs de latencia",
+            "Post-mortems sin culpa: estructura, análisis de causa raíz (5 Whys) y seguimiento de acciones"
+          ]
+        },
+        {
+          "titulo": "M6 - Cloud estratégico: gobernanza, landing zones y tendencias",
+          "contenidos": [
+            "Landing zones y AWS Organizations / GCP Resource Manager: estructura multi-cuenta",
+            "Service Control Policies (SCP) y Organization Policies: guardrails a nivel de organización",
+            "Cloud adoption frameworks: AWS CAF y Google CAF para liderar transformaciones",
+            "FinOps Foundation maturity model: escalar la cultura de optimización de costos",
+            "Tendencias 2025-2026: cloud soberana, confidential computing y AI infrastructure (GPUs en nube)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ciberseguridad-basico",
+      "capa": 2,
+      "categoria": "ciberseguridad",
+      "orden": 1,
+      "nivel": "basico",
+      "nombre": "Ciberseguridad - Básico",
+      "descripcion": "Habilita al estudiante para roles de entrada con supervisión en un equipo de seguridad, con dominio de las herramientas fundamentales de monitoreo y triaje de primer nivel.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "SIEM Wazuh (o equivalente)",
+        "Windows y Linux",
+        "OpenVAS"
+      ],
+      "perfil_entrada": "Certificado de Capa 1 en Ciberseguridad de Estud-IA, o conocimiento equivalente demostrable en el placement test (manejo de autenticación multifactor, gestión de contraseñas, identificación de phishing básico). No se requiere experiencia laboral previa en TI. Nivel de inglés A1-A2 validado por el placement test, suficiente para trabajar con glosario técnico guiado.",
+      "perfil_salida": "Monitorea logs y alertas en herramientas SIEM de nivel 1; clasifica y escala incidentes según severidad (triaje L1/L2); aplica hardening básico y gestión de parches; documenta hallazgos en informes técnicos estructurados; y se comunica en inglés técnico básico en el contexto de reportes de incidentes.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Fundamentos de redes y sistemas de seguridad",
+          "contenidos": [
+            "Protocolos TCP/IP y puertos comunes",
+            "Modelo OSI aplicado a la detección de anomalías de tráfico",
+            "Fundamentos de administración segura en Windows y Linux"
+          ]
+        },
+        {
+          "titulo": "M2 - Monitoreo y análisis de logs",
+          "contenidos": [
+            "Fuentes de logs: firewall, servidores, endpoints",
+            "Lectura de eventos en una herramienta SIEM (Wazuh o equivalente)",
+            "Correlación básica de eventos para identificar patrones sospechosos"
+          ]
+        },
+        {
+          "titulo": "M3 - Detección y triaje de incidentes",
+          "contenidos": [
+            "Clasificación de alertas por severidad",
+            "Playbooks de respuesta de nivel 1",
+            "Criterios de escalamiento a nivel 2"
+          ]
+        },
+        {
+          "titulo": "M4 - Hardening y gestión de vulnerabilidades básicas",
+          "contenidos": [
+            "Configuración segura de sistemas operativos",
+            "Gestión de parches y actualizaciones",
+            "Escaneo de vulnerabilidades con herramientas como OpenVAS"
+          ]
+        },
+        {
+          "titulo": "M5 - Documentación y reporte de hallazgos",
+          "contenidos": [
+            "Estructura de un informe de incidente de seguridad",
+            "Comunicación técnica clara para audiencias internas",
+            "Vocabulario y frases clave en inglés para reportes de incidentes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ciberseguridad-intermedio",
+      "capa": 2,
+      "categoria": "ciberseguridad",
+      "orden": 2,
+      "nivel": "intermedio",
+      "nombre": "Ciberseguridad - Intermedio",
+      "descripcion": "Dirigido a perfiles con autonomía técnica básica que pasan de monitorear a construir y endurecer controles de seguridad, ejecutando proyectos de complejidad moderada sin supervisión constante.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Firewalls y VPN corporativas",
+        "CIS Benchmarks",
+        "Soluciones EDR",
+        "Nessus",
+        "Qualys",
+        "Calculadora CVSS"
+      ],
+      "perfil_entrada": "Experiencia equivalente demostrable en monitoreo SOC de nivel 1, lectura de logs y triaje de incidentes. Manejo de línea de comandos Linux básico. Inglés A2-B1 validado en el nivel anterior.",
+      "perfil_salida": "Configura controles de seguridad perimetral (firewalls, listas de acceso); implementa políticas de hardening en sistemas operativos y endpoints; ejecuta escaneos de vulnerabilidades con herramientas profesionales e interpreta resultados para priorizar remediación; y elabora informes técnicos de hallazgos con recomendaciones de mitigación priorizadas por riesgo.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Arquitectura de seguridad perimetral",
+          "contenidos": [
+            "Firewalls: reglas y políticas",
+            "Listas de control de acceso (ACL) y segmentación de red",
+            "VPN corporativas y su rol en la arquitectura de seguridad"
+          ]
+        },
+        {
+          "titulo": "M2 - Hardening de sistemas operativos y endpoints",
+          "contenidos": [
+            "Guías de configuración segura (CIS Benchmarks)",
+            "Gestión de configuraciones seguras en Windows y Linux",
+            "Soluciones de detección y respuesta en endpoints (EDR)"
+          ]
+        },
+        {
+          "titulo": "M3 - Gestión de vulnerabilidad a escala",
+          "contenidos": [
+            "Escaneo con herramientas profesionales (Nessus, Qualys)",
+            "Sistema de puntuación CVSS y priorización de riesgo",
+            "Ciclo de gestión y seguimiento de remediación"
+          ]
+        },
+        {
+          "titulo": "M4 - Seguridad en aplicaciones e infraestructura",
+          "contenidos": [
+            "OWASP Top 10 aplicado a aplicaciones web",
+            "Pruebas básicas de seguridad en APIs",
+            "Fundamentos de seguridad en contenedores y nube"
+          ]
+        },
+        {
+          "titulo": "M5 - Respuesta a incidentes y forense inicial",
+          "contenidos": [
+            "Contención de incidentes en curso",
+            "Cadena de custodia de evidencia digital",
+            "Informe de incidente para audiencias técnicas y directivas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ciberseguridad-avanzado",
+      "capa": 2,
+      "categoria": "ciberseguridad",
+      "orden": 3,
+      "nivel": "avanzado",
+      "nombre": "Ciberseguridad - Avanzado",
+      "descripcion": "Nivel de alta especialización orientado al liderazgo técnico, la arquitectura de seguridad Zero Trust, la defensa activa y la resolución de problemas de seguridad críticos, incluyendo los propios de sistemas que integran inteligencia artificial.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Entorno de laboratorio de pentesting",
+        "Marcos PTES y MITRE ATT&CK",
+        "Honeypots",
+        "Fuentes de inteligencia de amenazas (CTI)",
+        "Soluciones IAM"
+      ],
+      "perfil_entrada": "Experiencia laboral verificable como analista o ingeniero de seguridad (mínimo 1 a 2 años). Dominio de hardening y gestión de vulnerabilidades. Inglés B1-B2.",
+      "perfil_salida": "Diseña arquitecturas de seguridad bajo el modelo Zero Trust; ejecuta pruebas de penetración estructuradas (reconocimiento, explotación controlada, reporte); aplica tácticas de defensa activa y threat hunting; y evalúa riesgos de seguridad específicos de sistemas que integran inteligencia artificial (prompt injection, envenenamiento de datos, exposición de modelos).",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Arquitectura Zero Trust",
+          "contenidos": [
+            "Principios de verificación continua y mínimo privilegio",
+            "Microsegmentación de red",
+            "Gestión de identidades (IAM) como nuevo perímetro de seguridad"
+          ]
+        },
+        {
+          "titulo": "M2 - Metodologías de pruebas de penetración",
+          "contenidos": [
+            "Reconocimiento, escaneo y explotación controlada",
+            "Post-explotación y elevación de privilegios en entorno de laboratorio",
+            "Marcos de referencia: PTES y MITRE ATT&CK"
+          ]
+        },
+        {
+          "titulo": "M3 - Defensa activa y threat hunting",
+          "contenidos": [
+            "Honeypots y trampas de detección temprana",
+            "Detección de movimiento lateral",
+            "Caza proactiva de amenazas a partir de inteligencia de amenazas (CTI)"
+          ]
+        },
+        {
+          "titulo": "M4 - Seguridad en sistemas de inteligencia artificial",
+          "contenidos": [
+            "Prompt injection y manipulación de modelos",
+            "Envenenamiento de datos (data poisoning) y exposición de modelos",
+            "Principios de gobernanza de IA aplicados a la seguridad"
+          ]
+        },
+        {
+          "titulo": "M5 - Arquitectura de seguridad y comunicación",
+          "contenidos": [
+            "Traducción de hallazgos técnicos en riesgo de negocio",
+            "Diseño de recomendaciones de arquitectura de remediación",
+            "Estructura de un informe ejecutivo de seguridad"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inteligencia-artificial-basico",
+      "capa": 2,
+      "categoria": "ia",
+      "orden": 1,
+      "nivel": "basico",
+      "nombre": "Inteligencia Artificial - Básico",
+      "descripcion": "El propósito de este programa es habilitar al estudiante para roles de entrada en equipos de datos e IA con supervisión (Machine Learning Engineer Junior), capaz de preparar datos y conectar modelos de IA ya existentes en aplicaciones sencillas.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Python",
+        "Jupyter Notebook",
+        "Google Colab",
+        "Git + GitHub",
+        "Pandas y NumPy",
+        "scikit-learn",
+        "APIs de IA (OpenAI, Hugging Face, Google AI)"
+      ],
+      "perfil_entrada": "Certificado de Capa 1 en la línea de Inteligencia Artificial o conocimiento equivalente demostrado en el placement test: uso crítico de IA generativa, ingeniería de prompts básica y comprensión de agentes simples. El nivel no asume conocimientos previos de programación: el primer módulo enseña Python desde cero, porque exigir Python como prerrequisito de entrada contradiría el hecho de que Capa 1 de esta línea no incluye programación.",
+      "perfil_salida": "Capacidad práctica para organizar y limpiar conjuntos de datos básicos destinados a modelos de machine learning, y para conectar herramientas y modelos de IA preentrenados (mediante API) en aplicaciones.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Python para datos e IA",
+          "contenidos": [
+            "Sintaxis básica, tipos de datos, estructuras de control y funciones",
+            "Estructuras de datos en Python: listas, diccionarios, tuplas",
+            "Entornos de trabajo: Jupyter Notebook y Google Colab",
+            "Control de versiones básico con Git y GitHub"
+          ]
+        },
+        {
+          "titulo": "M2 - Manipulación y limpieza de datos con Pandas y NumPy",
+          "contenidos": [
+            "Carga, exploración e inspección de datasets con Pandas",
+            "Limpieza de datos: valores nulos, duplicados y outliers",
+            "Operaciones vectorizadas y transformación de datos con NumPy",
+            "Exportación de datasets preparados para modelado"
+          ]
+        },
+        {
+          "titulo": "M3 - Fundamentos de Machine Learning supervisado",
+          "contenidos": [
+            "Diferencia entre aprendizaje supervisado y no supervisado",
+            "Flujo de entrenamiento, validación y evaluación de un modelo con scikit-learn",
+            "Métricas básicas de desempeño: precisión, exhaustividad, error",
+            "Sobreajuste y subajuste: identificación y mitigación básica"
+          ]
+        },
+        {
+          "titulo": "M4 - Consumo de APIs de modelos de IA preentrenados",
+          "contenidos": [
+            "Autenticación y estructura de una petición a una API de IA (OpenAI, Hugging Face, Google AI)",
+            "Manejo de claves y buenas prácticas de seguridad en el consumo de APIs",
+            "Procesamiento de respuestas y manejo de errores",
+            "Costos y límites de uso de APIs de IA en producción"
+          ]
+        },
+        {
+          "titulo": "M5 - Integración de modelos de IA en aplicaciones sencillas",
+          "contenidos": [
+            "Construcción de una aplicación mínima que combine datos propios con una API de IA",
+            "Documentación técnica básica de un proyecto de datos e IA",
+            "Publicación y versionado del proyecto en GitHub"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inteligencia-artificial-intermedio",
+      "capa": 2,
+      "categoria": "ia",
+      "orden": 2,
+      "nivel": "intermedio",
+      "nombre": "Inteligencia Artificial - Intermedio",
+      "descripcion": "Este programa pretende desarrollar la competencia para adaptar y entrenar modelos existentes de lenguaje o visión artificial con datos específicos, respondiendo a necesidades particulares de negocio (perfil AI Developer).",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "TensorFlow y Keras",
+        "spaCy",
+        "Hugging Face Transformers",
+        "LoRA",
+        "Weights & Biases o MLflow"
+      ],
+      "perfil_entrada": "Nivel básico de esta línea aprobado, o experiencia laboral equivalente verificable: dominio de Python, Pandas y NumPy, consumo de APIs de IA y comprensión de un flujo de machine learning supervisado de principio a fin.",
+      "perfil_salida": "Competencia para adaptar y entrenar modelos existentes de lenguaje o visión artificial con datos específicos del negocio, mediante redes neuronales, procesamiento de lenguaje natural básico y ajuste fino (fine-tuning) de modelos preentrenados.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Fundamentos de redes neuronales y Deep Learning",
+          "contenidos": [
+            "Arquitectura de una red neuronal: capas, pesos, funciones de activación",
+            "Entrenamiento con TensorFlow y Keras: forward pass, backpropagation, optimizadores",
+            "Redes convolucionales aplicadas a visión artificial, en su forma básica"
+          ]
+        },
+        {
+          "titulo": "M2 - Procesamiento de Lenguaje Natural básico",
+          "contenidos": [
+            "Tokenización, embeddings y representación vectorial de texto",
+            "Clasificación de texto y análisis de sentimiento con modelos preentrenados",
+            "Bibliotecas de NLP: spaCy y Hugging Face Transformers"
+          ]
+        },
+        {
+          "titulo": "M3 - Fine-tuning y adaptación de modelos",
+          "contenidos": [
+            "Transfer learning: cuándo ajustar un modelo en lugar de entrenarlo desde cero",
+            "Preparación de datasets propios para ajuste fino",
+            "Técnicas de ajuste eficiente en parámetros (LoRA, en su forma conceptual y aplicada)",
+            "Validación del desempeño del modelo ajustado frente al modelo base"
+          ]
+        },
+        {
+          "titulo": "M4 - Evaluación, versionado y despliegue",
+          "contenidos": [
+            "Métricas de evaluación específicas para NLP y visión artificial",
+            "Versionado de modelos y experimentos con Weights & Biases o MLflow",
+            "Despliegue básico de un modelo ajustado como servicio o API interna"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inteligencia-artificial-avanzado",
+      "capa": 2,
+      "categoria": "ia",
+      "orden": 3,
+      "nivel": "avanzado",
+      "nombre": "Inteligencia Artificial - Avanzado",
+      "descripcion": "El estudiante desarrollará las habilidades para estructurar e implementar arquitecturas de agentes autónomos (Agentic AI) y sistemas de generación aumentada por recuperación (RAG) avanzado, aplicando marcos de gobernanza y ética (perfil AI Solutions Architect).",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Bases de datos vectoriales (Pinecone, Chroma, pgvector)",
+        "Function calling",
+        "Model Context Protocol (MCP)",
+        "APIs empresariales"
+      ],
+      "perfil_entrada": "Nivel intermedio de esta línea aprobado, o experiencia laboral verificable en desarrollo o ajuste fino de modelos de IA: dominio de deep learning, NLP y despliegue básico de modelos.",
+      "perfil_salida": "Competencia para estructurar e implementar arquitecturas de agentes autónomos y sistemas RAG avanzado, aplicando marcos de gobernanza y ética para auditar el cumplimiento normativo técnico de las soluciones de IA.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Arquitectura de agentes autónomos",
+          "contenidos": [
+            "Planificación y razonamiento de agentes: descomposición de tareas complejas",
+            "Gestión de memoria de corto y largo plazo en un agente",
+            "Orquestación de sistemas multiagente y patrones de coordinación"
+          ]
+        },
+        {
+          "titulo": "M2 - RAG avanzado",
+          "contenidos": [
+            "Embeddings y bases de datos vectoriales (Pinecone, Chroma, pgvector)",
+            "Diseño de pipelines de recuperación e indexación de documentos a gran escala",
+            "Estrategias de reranking y evaluación de calidad de recuperación"
+          ]
+        },
+        {
+          "titulo": "M3 - Integración con herramientas y protocolos",
+          "contenidos": [
+            "Function calling y ejecución de herramientas externas por parte de un agente",
+            "Model Context Protocol (MCP) para conexión estandarizada con sistemas empresariales",
+            "Integración de agentes con APIs empresariales y sistemas heredados"
+          ]
+        },
+        {
+          "titulo": "M4 - Gobernanza, ética y cumplimiento normativo",
+          "contenidos": [
+            "Marcos de gobernanza de IA y auditoría de sesgo a escala de producción",
+            "Seguridad de agentes: guardrails, control de alucinaciones y prevención de usos indebidos",
+            "Cumplimiento normativo aplicable a sistemas de IA en producción"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marketing-digital-basico",
+      "capa": 2,
+      "categoria": "marketing",
+      "orden": 1,
+      "nivel": "basico",
+      "nombre": "Marketing digital - Básico",
+      "descripcion": "Este programa busca formar a los participantes en la ejecución de campañas de adquisición digital con lógica de datos desde el inicio, para ocupar roles de entrada en marketing de performance con supervisión.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Google Ads",
+        "Meta Ads",
+        "Google Analytics 4",
+        "Parámetros UTM",
+        "Asistentes de IA generativa para investigación de palabras clave"
+      ],
+      "perfil_entrada": "Comprensión del marketing digital como disciplina basada en datos, no solo de marca, manejo del marco AARRR para identificar las etapas de un embudo, nociones básicas de automatización (qué es un CRM, qué es un lead). Alfabetización básica en IA generativa: construcción de prompts y reconocimiento de sus limitaciones, lectura elemental de métricas (tasa de conversión, tráfico) en un dashboard simple. Alfabetización digital general: navegación, gestión de cuentas, uso de aplicaciones web.",
+      "perfil_salida": "Rol de entrada con supervisión (Performance Marketing Assistant/Junior); configura campañas básicas en Ads, aplica SEO técnico, lee analítica de conversión y da seguimiento al recorrido del cliente dentro del embudo de ventas.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Fundamentos de performance marketing",
+          "contenidos": [
+            "Diferencias entre marketing de marca y performance marketing",
+            "Tipos de campaña: adquisición, remarketing/retargeting, conversión",
+            "Estructura de una cuenta publicitaria (cuenta, campaña, conjunto de anuncios, anuncio)",
+            "Traducción de objetivos de negocio a objetivos de campaña"
+          ]
+        },
+        {
+          "titulo": "M2 - Configuración de campañas con Ads",
+          "contenidos": [
+            "Creación de cuentas y estructura en Google Ads y Meta Ads",
+            "Segmentación de audiencias: intereses, comportamiento, remarketing",
+            "Presupuesto y estrategias de puja (CPC, CPM, conversión optimizada)",
+            "Diseño de creatividades y copys orientados a conversión",
+            "Configuración de campañas de búsqueda, display y redes sociales"
+          ]
+        },
+        {
+          "titulo": "M3 - SEO técnico aplicado",
+          "contenidos": [
+            "Auditoría técnica de un sitio real: velocidad, indexación, enlaces rotos",
+            "Optimización on-page: metadatos, encabezados, estructura de URL",
+            "Investigación de palabras clave con apoyo de IA",
+            "Buenas prácticas de contenido para posicionamiento orgánico"
+          ]
+        },
+        {
+          "titulo": "M4 - Analítica de conversión básica",
+          "contenidos": [
+            "Configuración de Google Analytics 4 y objetivos de conversión",
+            "Parámetros UTM para rastrear campañas",
+            "Lectura de embudos de conversión y tasas de abandono",
+            "Identificación de oportunidades de optimización a partir de datos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marketing-digital-intermedio",
+      "capa": 2,
+      "categoria": "marketing",
+      "orden": 2,
+      "nivel": "intermedio",
+      "nombre": "Marketing digital - Intermedio",
+      "descripcion": "Este programa busca desarrollar la capacidad de diseñar e implementar estrategias de automatización y retención basadas en datos del cliente, para asumir roles de especialista en CRM y marketing automation.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "CRM (HubSpot, Braze o Salesforce Marketing Cloud)",
+        "Google Analytics 4",
+        "Google Ads",
+        "Canales email, push, WhatsApp e in-app"
+      ],
+      "perfil_entrada": "Configuración autónoma de campañas en Google Ads y Meta Ads (segmentación, presupuesto, puja). Auditoría y optimización SEO técnica básica de un sitio. Configuración de Google Analytics 4 y lectura de embudos de conversión. Manejo de parámetros UTM para el rastreo de campañas. Experiencia previa en la ejecución de un reto empresarial real de campaña.",
+      "perfil_salida": "Marketing Automation Specialist/CRM Strategist; calcula LTV, segmenta bases de datos comerciales, diseña e implementa automatizaciones multicanal, mejora retención y recompra, con bases transferibles a certificaciones de industria (Salesforce, HubSpot, Meta).",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Gobernanza, datos y modelo de contacto",
+          "contenidos": [
+            "Gobernanza y cumplimiento de datos (Habeas Data, manejo de PII)",
+            "Modelo de contacto: ciclo de vida del cliente y estados dentro del CRM",
+            "Calidad de datos: deduplicación, estandarización, consentimiento",
+            "Construcción de un perfil unificado de cliente"
+          ]
+        },
+        {
+          "titulo": "M2 - Automatización de flujos multicanal",
+          "contenidos": [
+            "Lógica de triggers, journeys y reglas de automatización",
+            "Diseño de flujos de nutrición multicanal (email, push, WhatsApp, in-app)",
+            "Configuración práctica sobre una herramienta representativa (HubSpot, Braze o Salesforce Marketing Cloud)",
+            "Pruebas y control de calidad de un flujo antes de publicarlo"
+          ]
+        },
+        {
+          "titulo": "M3 - Atribución multicanal",
+          "contenidos": [
+            "Modelos de atribución: lineal, en W, basado en datos (DDA)",
+            "Implementación de atribución en GA4 y Google Ads",
+            "Interpretación de reportes multicanal para decisiones de inversión",
+            "Limitaciones de la atribución y sesgos comunes"
+          ]
+        },
+        {
+          "titulo": "M4 - Segmentación y cálculo de LTV",
+          "contenidos": [
+            "Segmentación de bases de datos comerciales por comportamiento y valor",
+            "Cálculo del valor de vida del cliente (LTV/CLV)",
+            "Diseño de acciones de retención y recompra basadas en segmentos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marketing-digital-avanzado",
+      "capa": 2,
+      "categoria": "marketing",
+      "orden": 3,
+      "nivel": "avanzado",
+      "nombre": "Marketing digital - Avanzado",
+      "descripcion": "Este programa abarca temáticas para formar líderes técnicos de crecimiento capaces de diseñar sistemas de experimentación a escala y articular la estrategia de growth con la visión de producto y la analítica avanzada, para asumir roles de liderazgo en unidades de negocio digitales.",
+      "duracion": "80 horas: 60 horas de habilidades digitales + 20 horas de inglés técnico (7 semanas)",
+      "modalidad": "Híbrida: 30% presencial + 70% virtual (70% sincrónico y 30% asincrónico)",
+      "herramientas": [
+        "Herramientas de pruebas A/B y multivariantes",
+        "Marcos de priorización ICE/RICE",
+        "Herramientas de IA para forecasting y modelos predictivos",
+        "Asistentes de IA generativa"
+      ],
+      "perfil_entrada": "Diseño e implementación de flujos de automatización multicanal (email, push, WhatsApp), aplicación de principios de gobernanza y manejo de datos personales (PII) en CRM. Interpretación de modelos de atribución multicanal (lineal, W, basado en datos). Cálculo de LTV y diseño de estrategias de segmentación y retención. Participación previa en un reto empresarial de estrategia de automatización.",
+      "perfil_salida": "Liderazgo técnico en crecimiento (Growth Lead/Director); diseña sistemas de experimentación científica a escala, articula visión de producto con analítica avanzada y escala unidades de negocio digitales, con bases transferibles a certificaciones de atribución/experimentación de industria.",
+      "ruta_platzi": null,
+      "base_conceptual": null,
+      "modulos": [
+        {
+          "titulo": "M1 - Sistemas de experimentación",
+          "contenidos": [
+            "De la hipótesis al experimento: diseño de pruebas A/B y multivariantes",
+            "Construcción de un pipeline de experimentación (backlog, priorización, ejecución, aprendizaje)",
+            "Significancia estadística básica y errores comunes en la lectura de resultados"
+          ]
+        },
+        {
+          "titulo": "M2 - Growth y producto",
+          "contenidos": [
+            "Fundamentos de Product-Led Growth",
+            "Priorización sistematizada con ICE/RICE a nivel de portafolio de iniciativas",
+            "Construcción de un roadmap de crecimiento alineado a objetivos de negocio"
+          ]
+        },
+        {
+          "titulo": "M3 - IA y analítica predictiva aplicada a growth",
+          "contenidos": [
+            "Modelos predictivos de churn y de propensión a conversión",
+            "Forecasting de crecimiento con apoyo de herramientas de IA",
+            "Uso de IA generativa para generación y priorización de hipótesis de experimentación"
+          ]
+        },
+        {
+          "titulo": "M4 - Liderazgo de equipos de growth",
+          "contenidos": [
+            "Influencia sin autoridad directa: alineación entre marketing, producto y ventas",
+            "Gestión de stakeholders y comunicación de resultados a nivel ejecutivo",
+            "Construcción de una cultura de experimentación dentro de un equipo"
           ]
         }
       ]

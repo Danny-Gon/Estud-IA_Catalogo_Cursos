@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Estud-IA · Catálogo de cursos</title>
-<meta name="description" content="Catálogo de los 18 cursos de Capa 1 del programa de formación Estud-IA.">
+<title>Estud-IA · Programa de formación en habilidades digitales</title>
+<meta name="description" content="Estud-IA 2026: formación gratuita en habilidades digitales para Medellín. 36 cursos en dos capas y seis líneas de formación.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,230 +12,208 @@
 </head>
 <body>
 
-<a class="salto" href="#catalogo">Saltar al catálogo</a>
+<a class="salto" href="#capas">Saltar a las capas de formación</a>
 
-<header class="cabecera">
+<header class="portada">
   <div class="contenedor">
-    <h1 class="marca">Estud-IA <span class="capa">Capa 1</span></h1>
-    <p>Formación gratuita en tecnología para la ciudadanía de Medellín.
-       Dieciocho cursos de 60 horas, en seis líneas, sin requisitos previos.</p>
+    <p class="sobretitulo">Secretaría de Desarrollo Económico · Medellín</p>
+    <h1>Estud-IA <span class="anio">2026</span></h1>
+    <p class="bajada">
+      Formación gratuita en habilidades digitales para jóvenes y adultos del
+      Distrito de Ciencia, Tecnología e Innovación. Seis líneas, dos capas de
+      formación y un módulo de inglés técnico.
+    </p>
+    <p class="acciones-portada">
+      <a class="boton" href="#capas">Ver los cursos</a>
+      <a class="boton secundario" href="#programa">Sobre el programa</a>
+    </p>
   </div>
 </header>
 
-<nav class="filtros" aria-label="Filtrar por línea de formación">
-  <div class="contenedor fila" id="filtros"></div>
-</nav>
-
-<main class="contenedor" id="catalogo">
-
-  <p class="estado" id="cargando">Cargando el catálogo…</p>
-
-  <div class="estado oculto" id="error">
-    <h2>No se pudo cargar el catálogo</h2>
-    <p id="error-detalle"></p>
+<section class="cifras" aria-label="El programa en cifras">
+  <div class="contenedor rejilla-cifras" id="cifras">
+    <p class="cargando-cifras">Cargando…</p>
   </div>
+</section>
 
-  <div class="estado oculto" id="vacio">
-    <h2>Sin cursos en esta línea</h2>
-    <p>Prueba con otra línea de formación o vuelve a «Todas».</p>
-  </div>
+<main>
 
-  <ul class="rejilla oculto" id="rejilla"></ul>
+  <!-- ---------- Las dos capas ---------- -->
+  <section class="seccion" id="capas">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Las capas de formación</h2>
+      <p class="intro-seccion">
+        El modelo avanza por capas: se entra por la nivelación y se continúa
+        hacia la especialización técnica. Elige una para ver sus cursos.
+      </p>
+      <div class="rejilla-capas" id="rejilla-capas"></div>
+      <div class="estado oculto" id="error">
+        <h3>No se pudo cargar el catálogo</h3>
+        <p id="error-detalle"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Sobre el programa ---------- -->
+  <section class="seccion alterna" id="programa">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Sobre el programa</h2>
+      <div class="dos-columnas">
+        <div class="prosa">
+          <p>
+            Estud-IA 2026 implementa el modelo de formación en habilidades
+            digitales de la Secretaría de Desarrollo Económico de Medellín.
+            Suma un módulo de inglés técnico y otro de habilidades blandas,
+            y se desarrolla con metodologías intensivas de tipo
+            <i>learning-by-doing</i> —workshops, bootcamps y codecamps—.
+          </p>
+          <p>
+            El propósito es mitigar la obsolescencia tecnológica del capital
+            humano y articular estrategias de permanencia y generación de
+            ingresos, para favorecer la inserción laboral y el emprendimiento.
+          </p>
+          <p class="nota-fuente">
+            Las seis líneas corresponden a las áreas que el Estudio de
+            Empleabilidad y Talento Digital en Colombia 2025–2030
+            (MinTIC y Fedesoft) identifica con mayor demanda insatisfecha.
+          </p>
+        </div>
+        <div>
+          <h3 class="subtitulo">Objetivos</h3>
+          <ol class="objetivos">
+            <li>Implementar el modelo formativo con metodologías intensivas y
+              prácticas, integrando inglés y competencias socioemocionales,
+              orientadas a la certificación verificable de competencias.</li>
+            <li>Formar, retener y certificar a <b>3.500 participantes</b> en
+              habilidades digitales, con acompañamiento psicosocial y un
+              sistema de alertas tempranas que reduzca la deserción.</li>
+            <li>Formar, retener y certificar a <b>1.180 participantes</b> en
+              inglés.</li>
+            <li>Estructurar comunidades de práctica y redes colaborativas con
+              el ecosistema de Ciencia, Tecnología e Innovación.</li>
+            <li>Gestionar alianzas con el sector empresarial que faciliten la
+              inserción laboral, la incubación de startups o el escalamiento
+              productivo.</li>
+            <li>Evaluar el impacto del modelo con indicadores de trazabilidad,
+              inserción y calidad.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Líneas de formación ---------- -->
+  <section class="seccion" id="lineas">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Seis líneas de formación</h2>
+      <p class="intro-seccion">
+        Cada línea recorre las dos capas: se empieza por la nivelación y se
+        sigue por el bootcamp en tres niveles.
+      </p>
+      <ul class="rejilla-lineas" id="rejilla-lineas"></ul>
+    </div>
+  </section>
 
 </main>
 
 <footer class="pie-sitio">
   <div class="contenedor">
-    <p>Estud-IA · Programa de formación. Catálogo de Capa 1.</p>
+    <p>Estud-IA 2026 · Secretaría de Desarrollo Económico, Distrito Especial de Medellín.</p>
+    <p class="menudo">Catálogo de cursos de Capa 1 y Capa 2. La oferta puede ajustarse durante la ejecución del programa.</p>
   </div>
 </footer>
 
+<script src="datos.js"></script>
 <script>
 (function () {
   'use strict';
 
-  // Nombre visible de cada línea de formación. Las claves son los valores
-  // del campo "categoria" en cursos.json.
-  var LINEAS = {
-    programacion:   'Programación',
-    datos:          'Datos',
-    nube:           'Nube',
-    ciberseguridad: 'Ciberseguridad',
-    ia:             'Inteligencia Artificial',
-    marketing:      'Marketing'
-  };
-
+  var E = window.EstudIA;
   var $ = function (id) { return document.getElementById(id); };
 
-  var elFiltros = $('filtros');
-  var elRejilla = $('rejilla');
-  var elCargando = $('cargando');
-  var elError = $('error');
-  var elVacio = $('vacio');
-
-  var cursos = [];
-  var filtro = 'todas';
-
-  /* ----- Carga de datos -----------------------------------------------
-     Primero fetch('cursos.json'), como corresponde en Vercel. Si falla
-     -- el caso típico es abrir el index con file://, donde el navegador
-     bloquea fetch por CORS -- se cae al espejo cursos.js, que define
-     window.__CURSOS__ con exactamente el mismo contenido.
-  ------------------------------------------------------------------- */
-  function cargarCursos() {
-    return fetch('cursos.json')
-      .then(function (r) {
-        if (!r.ok) { throw new Error('HTTP ' + r.status); }
-        return r.json();
-      })
-      .catch(function () { return cargarEspejo(); });
+  function cifra(valor, etiqueta) {
+    return '<div class="cifra"><b>' + E.esc(valor) + '</b>' +
+           '<span>' + E.esc(etiqueta) + '</span></div>';
   }
 
-  function cargarEspejo() {
-    return new Promise(function (resolver, rechazar) {
-      if (window.__CURSOS__) { return resolver(window.__CURSOS__); }
-      var s = document.createElement('script');
-      s.src = 'cursos.js';
-      s.onload = function () {
-        if (window.__CURSOS__) { resolver(window.__CURSOS__); }
-        else { rechazar(new Error('cursos.js no definió los datos.')); }
-      };
-      s.onerror = function () {
-        rechazar(new Error('No se encontró cursos.json ni cursos.js junto a esta página.'));
-      };
-      document.head.appendChild(s);
-    });
-  }
+  function tarjetaCapa(numero, meta, cursos) {
+    var info = E.CAPAS[numero] || { nombre: 'Capa ' + numero, lema: '', detalle: '' };
+    var niveles = {};
+    cursos.forEach(function (c) { if (c.nivel) { niveles[c.nivel] = 1; } });
 
-  /* ----- Utilidades ----- */
-
-  // Todo texto del JSON pasa por aquí antes de entrar al DOM.
-  function esc(t) {
-    return String(t == null ? '' : t)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-  }
-
-  function nombreLinea(cat) {
-    return LINEAS[cat] || cat;
-  }
-
-  function plural(n, uno, varios) {
-    return n + ' ' + (n === 1 ? uno : varios);
-  }
-
-  /* ----- Filtros ----- */
-
-  function pintarFiltros() {
-    // Solo se ofrecen las líneas que existen en los datos, en el orden de LINEAS.
-    var presentes = Object.keys(LINEAS).filter(function (cat) {
-      return cursos.some(function (c) { return c.categoria === cat; });
+    var chips = '';
+    Object.keys(E.NIVELES).forEach(function (n) {
+      if (niveles[n]) { chips += '<span class="pastilla">' + E.esc(E.NIVELES[n]) + '</span>'; }
     });
 
-    // Cualquier categoría nueva en el JSON aparece igual, sin tocar este archivo.
-    cursos.forEach(function (c) {
-      if (presentes.indexOf(c.categoria) === -1) { presentes.push(c.categoria); }
-    });
+    var filas = '';
+    filas += '<li><b>' + cursos.length + '</b> cursos en <b>' + (meta ? meta.lineas : 6) + '</b> líneas</li>';
+    if (meta && meta.duracion) {
+      filas += '<li>' + E.esc(meta.duracion) + '</li>';
+    }
+    if (meta && meta.modalidad) {
+      filas += '<li>' + E.esc(meta.modalidad) + '</li>';
+    }
 
-    var html = boton('todas', 'Todas', cursos.length);
-    presentes.forEach(function (cat) {
-      var n = cursos.filter(function (c) { return c.categoria === cat; }).length;
-      html += boton(cat, nombreLinea(cat), n);
-    });
-
-    elFiltros.innerHTML = html + '<p class="conteo" id="conteo"></p>';
-
-    elFiltros.addEventListener('click', function (ev) {
-      var b = ev.target.closest('.chip-filtro');
-      if (!b) { return; }
-      filtro = b.dataset.cat;
-      Array.prototype.forEach.call(
-        elFiltros.querySelectorAll('.chip-filtro'),
-        function (otro) {
-          otro.setAttribute('aria-pressed', String(otro === b));
-        }
-      );
-      pintarCursos();
-    });
-  }
-
-  function boton(cat, etiqueta, n) {
-    return '<button type="button" class="chip-filtro" data-cat="' + esc(cat) + '"' +
-           ' aria-pressed="' + (cat === filtro) + '">' +
-           esc(etiqueta) + ' (' + n + ')</button>';
-  }
-
-  /* ----- Tarjetas ----- */
-
-  var ICONO_RELOJ =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/>' +
-    '<path d="M12 7.5v5l3.2 2" stroke-linecap="round"/></svg>';
-
-  var ICONO_MODULOS =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="5" rx="1.5"/>' +
-    '<rect x="3.5" y="14.5" width="17" height="5" rx="1.5"/></svg>';
-
-  function tarjeta(c) {
-    var n = (c.modulos || []).length;
     return '' +
-      '<li>' +
-      '<a class="tarjeta cat-' + esc(c.categoria) + '" href="curso.html?id=' +
-        encodeURIComponent(c.id) + '">' +
-        '<span class="chip-cat">' + esc(nombreLinea(c.categoria)) + '</span>' +
-        '<h2>' + esc(c.nombre) + '</h2>' +
-        '<p class="resumen">' + esc(c.descripcion) + '</p>' +
-        '<span class="pie">' +
-          '<span class="dato">' + ICONO_RELOJ + esc(c.duracion) + '</span>' +
-          '<span class="dato">' + ICONO_MODULOS + plural(n, 'módulo', 'módulos') + '</span>' +
-          '<span class="ver" aria-hidden="true">Ver →</span>' +
-        '</span>' +
-      '</a>' +
+      '<a class="tarjeta-capa capa-' + numero + '" href="capa.html?n=' + numero + '">' +
+        '<span class="etiqueta-capa">Capa ' + numero + '</span>' +
+        '<h3>' + E.esc(info.nombre) + '</h3>' +
+        '<p class="lema">' + E.esc(info.lema) + '</p>' +
+        '<p class="detalle-capa">' + E.esc(info.detalle) + '</p>' +
+        (chips ? '<p class="pastillas">' + chips + '</p>' : '') +
+        '<ul class="ficha-capa">' + filas + '</ul>' +
+        '<span class="cta">Ver los ' + cursos.length + ' cursos →</span>' +
+      '</a>';
+  }
+
+  function tarjetaLinea(cat, cursos) {
+    var n1 = cursos.filter(function (c) { return c.capa === 1; }).length;
+    var n2 = cursos.filter(function (c) { return c.capa === 2; }).length;
+    return '' +
+      '<li class="tarjeta-linea cat-' + E.esc(cat) + '">' +
+        '<span class="punto" aria-hidden="true"></span>' +
+        '<b>' + E.esc(E.nombreLinea(cat)) + '</b>' +
+        '<span class="menudo">' + n1 + ' en Capa 1 · ' + n2 + ' en Capa 2</span>' +
       '</li>';
   }
 
-  function pintarCursos() {
-    var lista = (filtro === 'todas')
-      ? cursos
-      : cursos.filter(function (c) { return c.categoria === filtro; });
+  E.cargarCursos().then(function (doc) {
+    var cursos = (doc && doc.cursos) || [];
+    if (!cursos.length) { throw new Error('El archivo cargó, pero no contiene cursos.'); }
 
-    elRejilla.innerHTML = lista.map(tarjeta).join('');
-    elRejilla.classList.toggle('oculto', lista.length === 0);
-    elVacio.classList.toggle('oculto', lista.length !== 0);
+    // Cifras, todas derivadas de los datos.
+    var lineas = {};
+    cursos.forEach(function (c) { lineas[c.categoria] = 1; });
+    var capas = {};
+    cursos.forEach(function (c) { capas[c.capa] = 1; });
 
-    var conteo = $('conteo');
-    if (conteo) {
-      conteo.textContent = (filtro === 'todas')
-        ? plural(cursos.length, 'curso', 'cursos')
-        : plural(lista.length, 'curso', 'cursos') + ' en ' + nombreLinea(filtro);
-    }
-  }
+    $('cifras').innerHTML =
+      cifra(cursos.length, 'cursos publicados') +
+      cifra(Object.keys(lineas).length, 'líneas de formación') +
+      cifra(Object.keys(capas).length, 'capas de formación') +
+      cifra(cursos.reduce(function (s, c) { return s + c.modulos.length; }, 0), 'módulos en total');
 
-  /* ----- Arranque ----- */
+    // Una tarjeta por capa presente en los datos.
+    var numeros = Object.keys(capas).map(Number).sort(function (a, b) { return a - b; });
+    $('rejilla-capas').innerHTML = numeros.map(function (n) {
+      return tarjetaCapa(n, E.datosCapa(doc, n),
+        cursos.filter(function (c) { return c.capa === n; }));
+    }).join('');
 
-  cargarCursos().then(function (datos) {
-    cursos = (datos && datos.cursos) || [];
-    elCargando.classList.add('oculto');
-
-    if (!cursos.length) {
-      elError.classList.remove('oculto');
-      $('error-detalle').textContent = 'El archivo cargó, pero no contiene cursos.';
-      return;
-    }
-
-    // Orden estable: por línea (según LINEAS) y luego por el campo "orden".
-    var peso = Object.keys(LINEAS);
-    cursos.sort(function (a, b) {
-      var pa = peso.indexOf(a.categoria), pb = peso.indexOf(b.categoria);
-      if (pa === -1) { pa = 99; }
-      if (pb === -1) { pb = 99; }
-      return pa - pb || (a.orden || 0) - (b.orden || 0);
+    // Líneas, en el orden de LINEAS.
+    var orden = Object.keys(E.LINEAS).filter(function (c) { return lineas[c]; });
+    Object.keys(lineas).forEach(function (c) {
+      if (orden.indexOf(c) === -1) { orden.push(c); }
     });
+    $('rejilla-lineas').innerHTML = orden.map(function (cat) {
+      return tarjetaLinea(cat, cursos.filter(function (c) { return c.categoria === cat; }));
+    }).join('');
 
-    pintarFiltros();
-    pintarCursos();
   }).catch(function (err) {
-    elCargando.classList.add('oculto');
-    elError.classList.remove('oculto');
+    var c = $('cifras');
+    if (c) { c.innerHTML = ''; }
+    $('error').classList.remove('oculto');
     $('error-detalle').textContent = err.message;
   });
 
